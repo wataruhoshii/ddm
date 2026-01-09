@@ -18,7 +18,7 @@ ESTATS_DIR = '../estats'
 AED_FILE = '../01_aed_data/kawasaki_aed_merged.csv'
 POPULATION_DIR = '../kawasakishi_data'
 GRID_SPACING = 50  # グリッド間隔（メートル）
-COVER_DISTANCE = 500  # カバー範囲（メートル）
+COVER_DISTANCE = 300  # カバー範囲（メートル）
 
 # 区コード
 WARD_CODES = {

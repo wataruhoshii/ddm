@@ -218,21 +218,21 @@
             
             <div class="stats-grid">
                 <div class="stat-card green">
-                    <div class="number">97.3%</div>
+                    <div class="number">84.7%</div>
                     <div class="label">リスク加重カバー率</div>
                 </div>
                 <div class="stat-card orange">
-                    <div class="number">2.7%</div>
+                    <div class="number">15.3%</div>
                     <div class="label">カバー外</div>
                 </div>
                 <div class="stat-card red">
-                    <div class="number">1,975,367</div>
+                    <div class="number">11,364,331</div>
                     <div class="label">カバー外リスク加重人口<br>（累計）</div>
                 </div>
             </div>
             
             <p style="margin-top: 15px; padding: 15px; background: #edf2f7; border-radius: 8px; font-size: 0.95rem;">
-                📐 <strong>カバー範囲の定義:</strong> AEDから<strong>500m圏内</strong>を「カバー範囲」と定義。町丁内の各地点（50m間隔のグリッド）がカバーされているかを判定し、カバー率を算出。
+                📐 <strong>カバー範囲の定義:</strong> AEDから<strong>300m圏内</strong>を「カバー範囲」と定義。町丁内の各地点（50m間隔のグリッド）がカバーされているかを判定し、カバー率を算出。
             </p>
         </section>
 
@@ -274,7 +274,7 @@
             </div>
             
             <div class="highlight warning">
-                <strong>📊 モデル改良による発見:</strong> 従来モデルでは「カバー率98.1%」と評価されていましたが、一様分布モデルでは<strong>97.3%</strong>に。部分的にしかカバーされていない大規模町丁の存在が明らかになりました。
+                <strong>📊 300mカバー範囲での評価:</strong> 心停止から除細動までの理想的な時間（3分以内）を考慮し、カバー範囲を300mに設定。より厳格な基準でカバー率<strong>84.7%</strong>と算出されました。約15%の地域でAED到達に時間がかかる可能性があります。
             </div>
         </section>
 
@@ -329,14 +329,14 @@
             <div class="ranking-item">
                 <div class="rank-number top3">1</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 久末 <span class="badge orange">部分カバー</span></div>
+                    <div class="ranking-title">高津区 久末 <span class="badge red">低カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 66.4%</span>
-                        <span>⚠️ カバー外リスク: 350,390</span>
-                        <span>📏 最寄りAED: 287m</span>
+                        <span>📊 カバー率: 31.2%</span>
+                        <span>⚠️ カバー外リスク: 717,465</span>
+                        <span>📏 最寄りAED: 79m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 広大な町丁（125グリッド点）の約1/3がカバー外。町丁内に追加AEDが必要。
+                        💡 最寄りAEDは79mと近いが、町丁が広大で約70%がカバー外。複数箇所への追加AED設置が最優先。
                     </div>
                 </div>
             </div>
@@ -344,14 +344,14 @@
             <div class="ranking-item">
                 <div class="rank-number top3">2</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 岡上 <span class="badge red">半分以上カバー外</span></div>
+                    <div class="ranking-title">高津区 千年 <span class="badge orange">部分カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 51.6%</span>
-                        <span>⚠️ カバー外リスク: 251,761</span>
-                        <span>📏 最寄りAED: 17m</span>
+                        <span>📊 カバー率: 54.2%</span>
+                        <span>⚠️ カバー外リスク: 404,288</span>
+                        <span>📏 最寄りAED: 4m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 最寄りAEDは17mだが、町丁が広く（576グリッド点）半分以上がカバー外。複数AED必要。
+                        💡 既存AEDがあるが、町丁が広く約半分がカバー外。追加設置が必要。
                     </div>
                 </div>
             </div>
@@ -359,14 +359,14 @@
             <div class="ranking-item">
                 <div class="rank-number top3">3</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 黒川 <span class="badge red">半分以上カバー外</span></div>
+                    <div class="ranking-title">麻生区 岡上 <span class="badge red">低カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 44.8%</span>
-                        <span>⚠️ カバー外リスク: 132,378</span>
-                        <span>📏 最寄りAED: 21m</span>
+                        <span>📊 カバー率: 27.4%</span>
+                        <span>⚠️ カバー外リスク: 377,191</span>
+                        <span>📏 最寄りAED: 17m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 最大規模の町丁（804グリッド点）。既存AEDがあるが、町丁の半分以上がカバー外。
+                        💡 最寄りAEDは17mだが、町丁が非常に広く約73%がカバー外。複数AED必要。
                     </div>
                 </div>
             </div>
@@ -374,92 +374,95 @@
             <div class="ranking-item">
                 <div class="rank-number orange">4</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 片平四丁目 <span class="badge red">半分以上カバー外</span></div>
+                    <div class="ranking-title">高津区 蟹ケ谷 <span class="badge orange">部分カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 47.5%</span>
-                        <span>⚠️ カバー外リスク: 104,336</span>
-                        <span>📏 最寄りAED: 223m</span>
+                        <span>📊 カバー率: 57.4%</span>
+                        <span>⚠️ カバー外リスク: 249,009</span>
+                        <span>📏 最寄りAED: 72m</span>
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number orange">5</div>
+                <div class="rank-number">5</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 白鳥四丁目 <span class="badge orange">部分カバー</span></div>
+                    <div class="ranking-title">高津区 久末（別エリア） <span class="badge green">高カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 62.0%</span>
-                        <span>⚠️ カバー外リスク: 71,113</span>
-                        <span>📏 最寄りAED: 284m</span>
+                        <span>📊 カバー率: 77.9%</span>
+                        <span>⚠️ カバー外リスク: 230,277</span>
+                        <span>📏 最寄りAED: 9m</span>
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number">6</div>
+                <div class="rank-number red">6</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 蟹ケ谷 <span class="badge green">高カバー</span></div>
+                    <div class="ranking-title">川崎区 港町 <span class="badge red">低カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 88.2%</span>
-                        <span>⚠️ カバー外リスク: 69,169</span>
-                        <span>📏 最寄りAED: 161m</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number red">7</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">麻生区 細山四丁目 <span class="badge red">低カバー</span></div>
-                    <div class="ranking-stats">
-                        <span>📊 カバー率: 38.1%</span>
-                        <span>⚠️ カバー外リスク: 65,637</span>
-                        <span>📏 最寄りAED: 318m</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number red">8</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">麻生区 細山八丁目 <span class="badge red">極低カバー</span></div>
-                    <div class="ranking-stats">
-                        <span>📊 カバー率: 17.9%</span>
-                        <span>⚠️ カバー外リスク: 62,589</span>
-                        <span>📏 最寄りAED: 335m</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number red">9</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">麻生区 細山七丁目 <span class="badge red">完全空白</span></div>
-                    <div class="ranking-stats">
-                        <span>📊 カバー率: 0.0%</span>
-                        <span>⚠️ カバー外リスク: 61,087</span>
-                        <span>📏 最寄りAED: 647m</span>
+                        <span>📊 カバー率: 24.0%</span>
+                        <span>⚠️ カバー外リスク: 210,166</span>
+                        <span>📏 最寄りAED: 182m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ <strong>完全な空白地帯。</strong>最寄りAEDまで647m。最優先で設置が必要。
+                        ⚠️ <strong>川崎区で最もカバー率が低い地域。</strong>約76%がカバー外。
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number orange">10</div>
+                <div class="rank-number">7</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 下麻生三丁目 <span class="badge orange">部分カバー</span></div>
+                    <div class="ranking-title">高津区 子母口 <span class="badge orange">部分カバー</span></div>
                     <div class="ranking-stats">
-                        <span>📊 カバー率: 56.8%</span>
-                        <span>⚠️ カバー外リスク: 60,854</span>
-                        <span>📏 最寄りAED: 267m</span>
+                        <span>📊 カバー率: 68.4%</span>
+                        <span>⚠️ カバー外リスク: 206,536</span>
+                        <span>📏 最寄りAED: 146m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number">8</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">中原区 上平間 <span class="badge orange">部分カバー</span></div>
+                    <div class="ranking-stats">
+                        <span>📊 カバー率: 66.1%</span>
+                        <span>⚠️ カバー外リスク: 204,794</span>
+                        <span>📏 最寄りAED: 47m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number">9</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">高津区 上作延 <span class="badge green">高カバー</span></div>
+                    <div class="ranking-stats">
+                        <span>📊 カバー率: 72.9%</span>
+                        <span>⚠️ カバー外リスク: 203,964</span>
+                        <span>📏 最寄りAED: 6m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number red">10</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">麻生区 黒川 <span class="badge red">低カバー</span></div>
+                    <div class="ranking-stats">
+                        <span>📊 カバー率: 21.1%</span>
+                        <span>⚠️ カバー外リスク: 189,026</span>
+                        <span>📏 最寄りAED: 21m</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 最大規模の町丁。既存AEDがあるが、約80%がカバー外。複数AED必要。
                     </div>
                 </div>
             </div>
             
             <div class="highlight success">
-                <strong>🎯 分析のポイント:</strong> TOP10のうち<strong>7地域が麻生区</strong>に集中。特に細山地区（7・8丁目）は極めて低いカバー率で、緊急の対応が必要です。また、高津区久末は最寄りAEDが287mと近いにもかかわらず、町丁が広いため1/3がカバー外となっています。
+                <strong>🎯 分析のポイント:</strong> 300mカバー範囲では<strong>高津区の町丁が上位を占める</strong>結果に。特に「久末」「千年」「蟹ケ谷」など、人口が多く広大な町丁でカバー外リスクが高い。川崎区港町（6位）も24%と極めて低いカバー率で対応が必要。
             </div>
         </section>
 
@@ -476,25 +479,36 @@
                     <th>対応策</th>
                 </tr>
                 <tr>
-                    <td><strong>麻生区</strong></td>
-                    <td>TOP10中7地域。細山地区が深刻</td>
-                    <td>🔴 <strong>最優先</strong>: 細山7・8丁目に緊急設置</td>
+                    <td><strong>高津区</strong></td>
+                    <td>TOP10中6地域（久末、千年、蟹ケ谷、子母口、上作延）</td>
+                    <td>🔴 <strong>最優先</strong>: 久末・千年に複数AED追加設置</td>
                 </tr>
                 <tr>
-                    <td><strong>高津区</strong></td>
-                    <td>久末・蟹ケ谷が広大で部分カバー</td>
-                    <td>🟠 町丁内に追加AED設置</td>
+                    <td><strong>麻生区</strong></td>
+                    <td>岡上・黒川がカバー率20〜30%台</td>
+                    <td>🔴 広大な町丁に複数AED設置</td>
+                </tr>
+                <tr>
+                    <td><strong>川崎区</strong></td>
+                    <td>港町がカバー率24%と低い</td>
+                    <td>🟠 港町エリアへの追加設置</td>
+                </tr>
+                <tr>
+                    <td><strong>中原区</strong></td>
+                    <td>上平間がカバー率66%</td>
+                    <td>🟢 町丁内の未カバー部分に追加</td>
                 </tr>
             </table>
             
-            <h3>完全空白地帯への緊急対応</h3>
+            <h3>低カバー率地域への緊急対応</h3>
             <ul style="margin-left: 20px; line-height: 2;">
-                <li><strong>細山七丁目:</strong> カバー率0%、最寄りAED 647m → 即時設置が必要</li>
-                <li><strong>細山八丁目:</strong> カバー率17.9% → 追加設置推奨</li>
+                <li><strong>高津区 久末:</strong> カバー率31.2%、カバー外リスク717,465 → 複数箇所に追加設置が最優先</li>
+                <li><strong>麻生区 黒川:</strong> カバー率21.1%、最大規模の町丁 → 3〜4台の追加設置推奨</li>
+                <li><strong>川崎区 港町:</strong> カバー率24.0% → 川崎区内で最も対応が必要</li>
             </ul>
             
             <h3>大規模町丁への対応</h3>
-            <p>岡上（576グリッド点）、黒川（804グリッド点）、久末（125グリッド点）などの大規模町丁は、<strong>複数のAED設置</strong>が必要です。1台では町丁全体をカバーできません。</p>
+            <p>300mカバー範囲では、多くの大規模町丁で<strong>複数のAED設置</strong>が必要です。特に久末、岡上、黒川などは1台では町丁全体をカバーできず、3〜5台の配置が理想的です。</p>
         </section>
 
         <!-- データソース -->
