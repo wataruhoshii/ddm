@@ -4,11 +4,11 @@
 import pandas as pd
 import folium
 
-# データ読み込み
-df_rec = pd.read_csv('grid_level_recommendations.csv')
+# データ読み込み（グルーピング済みデータを使用）
+df_rec = pd.read_csv('grid_level_recommendations_grouped.csv')
 df_aed = pd.read_csv('../01_aed_data/kawasaki_aed_merged.csv')
 
-# TOP20に絞る
+# TOP20
 df_top = df_rec.head(20)
 
 # マップ作成（登戸付近を中心に）

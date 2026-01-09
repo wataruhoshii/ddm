@@ -228,8 +228,8 @@ def main():
         print(f"   座標: ({row['緯度']}, {row['経度']})")
         print(f"   新規カバー: {row['新規カバーリスク加重人口']:,}")
     
-    df_results.head(100).to_csv('grid_level_recommendations.csv', index=False, encoding='utf-8-sig')
-    print(f"\n💾 結果保存: grid_level_recommendations.csv")
+    df_results.to_csv('grid_level_recommendations.csv', index=False, encoding='utf-8-sig')
+    print(f"\n💾 結果保存: grid_level_recommendations.csv ({len(df_results)}件)")
     
     elapsed = time.time() - start_time
     print(f"\n⏱️ 総実行時間: {elapsed:.1f}秒")
