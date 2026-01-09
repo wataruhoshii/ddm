@@ -533,7 +533,7 @@
                 <p>院外心停止の年齢別発生率（人口10万人あたり/年）に基づき、40-44歳を基準（1.0）としたリスク重みを設定。</p>
                 <div class="formula">
                     リスク加重人口 = Σ（各年齢階級の人口 × リスク重み）<br>
-                    将来重視スコア = 2045年リスク加重人口×0.5 + 2025年リスク加重人口×0.3 + 増加分×0.2
+                    優先度 = 2025年〜2070年（全10時点）のリスク加重人口を平等に合計
                 </div>
             </div>
             
@@ -572,11 +572,11 @@
             </table>
         </section>
 
-        <!-- 将来重視TOP10 -->
+        <!-- TOP10 -->
         <section>
-            <h2>🎯 3. 将来を見据えたAED設置推奨地域 TOP10</h2>
+            <h2>🎯 3. AED設置推奨地域 TOP10</h2>
             
-            <p>2025年の現状だけでなく、<strong>2045年までのリスク加重人口の変化</strong>を考慮した優先順位を算出しました。特に<strong>将来的にリスクが急増する地域</strong>を重視しています。</p>
+            <p>2025年〜2070年の<strong>全10時点のリスク加重人口を平等に合計</strong>し、累計が大きい順に優先順位を決定しました。長期間にわたって多くの命を救える場所を特定しています。</p>
             
             <div class="map-container">
                 <iframe src="future_aed_recommendation_map.html"></iframe>
@@ -585,63 +585,59 @@
             <div class="ranking-item">
                 <div class="rank-number top3">1</div>
                 <div class="ranking-content">
+                    <div class="ranking-title">麻生区 黒川</div>
+                    <div class="ranking-stats">
+                        <span>📊 リスク加重人口（累計）: 239,712</span>
+                        <span>👥 総人口（累計）: 35,353人</span>
+                        <span>📏 最寄りAED: 500m</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 2025〜2070年を通じて最もリスク加重人口が大きい空白地帯。最優先で設置すべき。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number top3">2</div>
+                <div class="ranking-content">
                     <div class="ranking-title">多摩区 堰一丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 3,777人→3,671人</span>
-                        <span>📊 リスク加重: 20,781→23,399</span>
-                        <span class="future-change low">+13%</span>
+                        <span>📊 リスク加重人口（累計）: 233,027</span>
+                        <span>👥 総人口（累計）: 36,186人</span>
                         <span>📏 最寄りAED: 520m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 現在・将来ともにリスク加重人口が最大の空白地帯。安定した高リスク地域のため、最優先で設置すべき。
+                        💡 総人口が最大の空白地帯。コンビニまたは公民館への設置が有効。
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number rapid">2</div>
+                <div class="rank-number top3">3</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 黒川 <span class="badge red">急増地域</span></div>
+                    <div class="ranking-title">麻生区 片平四丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 3,464人→3,665人</span>
-                        <span>📊 リスク加重: 13,019→23,380</span>
-                        <span class="future-change high">+80%</span>
-                        <span>📏 最寄りAED: 500m</span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ 20年間でリスク加重人口が<strong>80%増加</strong>する急成長地域。新興住宅地の高齢化が進行。今からの設置が将来の命を救う。
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number rapid">3</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">麻生区 片平四丁目 <span class="badge red">急増地域</span></div>
-                    <div class="ranking-stats">
-                        <span>👥 人口: 2,772人→2,830人</span>
-                        <span>📊 リスク加重: 12,248→21,039</span>
-                        <span class="future-change high">+72%</span>
+                        <span>📊 リスク加重人口（累計）: 198,734</span>
+                        <span>👥 総人口（累計）: 27,209人</span>
                         <span>📏 最寄りAED: 550m</span>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ リスク加重人口が<strong>72%増加</strong>。片平小学校周辺の住宅地。コンビニまたは公共施設への設置が有効。
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 片平小学校周辺の住宅地。コンビニまたは公共施設への設置が有効。
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number rapid">4</div>
+                <div class="rank-number">4</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 白鳥四丁目 <span class="badge red">最急増</span></div>
+                    <div class="ranking-title">麻生区 白鳥四丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 2,549人→2,635人</span>
-                        <span>📊 リスク加重: 10,340→20,007</span>
-                        <span class="future-change high">+94%</span>
+                        <span>📊 リスク加重人口（累計）: 187,001</span>
+                        <span>👥 総人口（累計）: 24,948人</span>
                         <span>📏 最寄りAED: 540m</span>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ TOP10中<strong>最大の増加率94%</strong>。白鳥中学校周辺。将来を見据えた最重要設置候補地の一つ。
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 白鳥中学校周辺の住宅地。
                     </div>
                 </div>
             </div>
@@ -651,29 +647,27 @@
                 <div class="ranking-content">
                     <div class="ranking-title">多摩区 宿河原七丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 2,344人→2,282人</span>
-                        <span>📊 リスク加重: 12,632→14,606</span>
-                        <span class="future-change low">+16%</span>
+                        <span>📊 リスク加重人口（累計）: 144,212</span>
+                        <span>👥 総人口（累計）: 22,452人</span>
                         <span>📏 最寄りAED: 550m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 安定した高リスク地域。緑化センター周辺へのアクセス向上のため、コンビニ設置が有効。
+                        💡 緑化センター周辺。コンビニ設置が有効。
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number rapid">6</div>
+                <div class="rank-number">6</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">宮前区 有馬九丁目 <span class="badge red">急増地域</span></div>
+                    <div class="ranking-title">宮前区 有馬九丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 1,939人→2,011人</span>
-                        <span>📊 リスク加重: 8,215→14,997</span>
-                        <span class="future-change high">+83%</span>
+                        <span>📊 リスク加重人口（累計）: 142,865</span>
+                        <span>👥 総人口（累計）: 19,374人</span>
                         <span>📏 最寄りAED: 510m</span>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ リスク加重人口が<strong>83%増加</strong>。有馬小学校周辺の住宅街。将来の高齢化に備えた設置が必要。
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 有馬小学校周辺の住宅街。
                     </div>
                 </div>
             </div>
@@ -683,13 +677,12 @@
                 <div class="ranking-content">
                     <div class="ranking-title">多摩区 西生田五丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 1,955人→1,845人</span>
-                        <span>📊 リスク加重: 11,143→12,190</span>
-                        <span class="future-change low">+9%</span>
+                        <span>📊 リスク加重人口（累計）: 121,486</span>
+                        <span>👥 総人口（累計）: 18,297人</span>
                         <span>📏 最寄りAED: 600m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 高齢化率が既に高い丘陵住宅地。薬局やドラッグストアへの設置が有効。
+                        💡 丘陵住宅地。薬局やドラッグストアへの設置が有効。
                     </div>
                 </div>
             </div>
@@ -699,9 +692,8 @@
                 <div class="ranking-content">
                     <div class="ranking-title">多摩区 菅野戸呂</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 1,942人→1,935人</span>
-                        <span>📊 リスク加重: 8,849→11,699</span>
-                        <span class="future-change medium">+32%</span>
+                        <span>📊 リスク加重人口（累計）: 116,271</span>
+                        <span>👥 総人口（累計）: 19,037人</span>
                         <span>📏 最寄りAED: 610m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
@@ -715,13 +707,12 @@
                 <div class="ranking-content">
                     <div class="ranking-title">麻生区 細山四丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 1,484人→1,486人</span>
-                        <span>📊 リスク加重: 7,423→11,362</span>
-                        <span class="future-change medium">+53%</span>
+                        <span>📊 リスク加重人口（累計）: 106,028</span>
+                        <span>👥 総人口（累計）: 14,304人</span>
                         <span>📏 最寄りAED: 580m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 丘陵地の住宅街。リスク加重人口が53%増加予測。
+                        💡 丘陵地の住宅街。
                     </div>
                 </div>
             </div>
@@ -731,19 +722,18 @@
                 <div class="ranking-content">
                     <div class="ranking-title">麻生区 栗木一丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 人口: 1,097人→1,092人</span>
-                        <span>📊 リスク加重: 5,620→8,908</span>
-                        <span class="future-change medium">+59%</span>
+                        <span>📊 リスク加重人口（累計）: 80,614</span>
+                        <span>👥 総人口（累計）: 10,405人</span>
                         <span>📏 最寄りAED: 570m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 小田急多摩線沿線の住宅地。リスク加重人口が59%増加予測。
+                        💡 小田急多摩線沿線の住宅地。
                     </div>
                 </div>
             </div>
             
             <div class="highlight success">
-                <strong>🎯 将来重視分析の特徴:</strong> TOP10のうち<strong>5地域</strong>（黒川、片平四丁目、白鳥四丁目、有馬九丁目、栗木一丁目）は将来的にリスクが<strong>50%以上増加</strong>する地域です。特に麻生区は新興住宅地の高齢化が急速に進む見込みのため、<strong>今からの先行投資</strong>が多くの命を救うことにつながります。
+                <strong>🎯 分析のポイント:</strong> 2025年〜2070年の全10時点を平等に合計したリスク加重人口で順位付け。麻生区（5地域）と多摩区（4地域）に空白地帯が集中しています。
             </div>
         </section>
 
@@ -754,11 +744,11 @@
             <p>分析結果に基づき、<strong>現在だけでなく将来にわたって効果を発揮する</strong>AED設置戦略を提案します。</p>
             
             <div class="methodology" style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-left: 4px solid #805ad5;">
-                <h4>🔮 将来重視の配置原則</h4>
+                <h4>🔮 配置の原則</h4>
                 <ol style="margin-left: 20px; margin-top: 10px;">
-                    <li><strong>急増地域優先:</strong> リスク加重人口の増加率が高い地域（麻生区中心）を優先</li>
-                    <li><strong>安定高リスク地域:</strong> 現在も将来もリスクが高い地域（多摩区中心）を確保</li>
-                    <li><strong>長期運用を考慮:</strong> 20年以上の運用を想定した設置場所選定</li>
+                    <li><strong>累計リスク加重人口順:</strong> 2025〜2070年の全期間を通じてリスクが大きい地域を優先</li>
+                    <li><strong>長期運用を考慮:</strong> 45年間の運用を想定した設置場所選定</li>
+                    <li><strong>空白地帯の解消:</strong> 500m以内にAEDがない地域を対象</li>
                 </ol>
             </div>
             
@@ -768,26 +758,26 @@
                 <tr>
                     <th>区</th>
                     <th>推奨地域数</th>
-                    <th>特徴</th>
+                    <th>累計リスク加重人口</th>
                     <th>戦略</th>
                 </tr>
                 <tr>
                     <td><strong>麻生区</strong></td>
                     <td>5地域</td>
-                    <td>リスク急増（+50〜94%）</td>
-                    <td>🔴 <strong>最優先</strong>: 今すぐ設置で将来効果最大</td>
+                    <td>812,089</td>
+                    <td>🔴 <strong>最優先</strong>: 黒川・片平・白鳥を中心に</td>
                 </tr>
                 <tr>
                     <td><strong>多摩区</strong></td>
                     <td>4地域</td>
-                    <td>安定高リスク</td>
-                    <td>🟠 <strong>優先</strong>: 現在のカバー率向上</td>
+                    <td>614,996</td>
+                    <td>🟠 <strong>優先</strong>: 堰・宿河原・西生田・菅野戸呂</td>
                 </tr>
                 <tr>
                     <td><strong>宮前区</strong></td>
                     <td>1地域</td>
-                    <td>リスク急増（+83%）</td>
-                    <td>🟠 <strong>優先</strong>: 将来対策</td>
+                    <td>142,865</td>
+                    <td>🟠 <strong>優先</strong>: 有馬九丁目</td>
                 </tr>
             </table>
             
