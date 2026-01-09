@@ -450,54 +450,133 @@
             </div>
         </section>
 
+        <!-- グリッドレベル分析 -->
+        <section>
+            <h2>📍 4. グリッドレベル推奨設置地点</h2>
+            
+            <p>町丁単位ではなく、<strong>50mグリッド単位</strong>で「その地点にAEDを1台設置した場合に新たにカバーされるリスク加重人口」を算出しました。</p>
+            
+            <div class="highlight">
+                <strong>🔬 分析概要:</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>全グリッド点: 70,726点</li>
+                    <li>未カバー点: 33,660点（47.6%）</li>
+                    <li>各未カバー点を候補として効果を計算</li>
+                </ul>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="grid_level_map.html"></iframe>
+            </div>
+            
+            <h3>🏆 TOP5 推奨設置地点</h3>
+            
+            <div class="ranking-item">
+                <div class="rank-number top3">1</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">多摩区 登戸 <span class="badge red">最高効果</span></div>
+                    <div class="ranking-stats">
+                        <span>📍 (35.6267, 139.5666)</span>
+                        <span>🎯 新規カバー: <strong>754,696</strong></span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 <strong>1台で最大の効果。</strong>この地点にAEDを設置すると約75万人分のリスク加重人口を新たにカバー。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number top3">2</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">多摩区 登戸 <span class="badge red">最高効果</span></div>
+                    <div class="ranking-stats">
+                        <span>📍 (35.6262, 139.5666)</span>
+                        <span>🎯 新規カバー: 751,390</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number top3">3</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">多摩区 登戸 <span class="badge red">最高効果</span></div>
+                    <div class="ranking-stats">
+                        <span>📍 (35.6258, 139.5666)</span>
+                        <span>🎯 新規カバー: 748,084</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number">15</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">高津区 久末 <span class="badge orange">高効果</span></div>
+                    <div class="ranking-stats">
+                        <span>📍 (35.5642, 139.6246)</span>
+                        <span>🎯 新規カバー: 692,469</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
+                        💡 町丁レベルでは1位だった久末も、グリッドレベルでは15位。登戸エリアの未カバー集中度が高い。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight warning">
+                <strong>📊 発見:</strong> 町丁レベル分析では「高津区 久末」が1位でしたが、グリッドレベルでは<strong>「多摩区 登戸」が圧倒的1位</strong>。登戸エリアには複数の町丁にまたがる大きな未カバー地域があり、1台のAEDで約75万人分のリスク加重人口をカバーできます。
+            </div>
+        </section>
+
         <!-- 戦略提案 -->
         <section>
-            <h2>💡 4. AED設置戦略</h2>
+            <h2>💡 5. AED設置戦略</h2>
+            
+            <h3>🥇 最優先: 多摩区 登戸エリア</h3>
+            <div class="highlight" style="background: #fff5f5; border-left-color: #c53030;">
+                <strong>グリッドレベル分析により、登戸エリアが最も効果的な設置場所と判明。</strong><br>
+                座標 (35.6267, 139.5666) 付近に1台設置するだけで、約<strong>75万人分</strong>のリスク加重人口を新たにカバー可能。
+            </div>
             
             <h3>地域別の対応方針</h3>
             
             <table>
                 <tr>
+                    <th>優先度</th>
                     <th>区</th>
-                    <th>課題</th>
                     <th>対応策</th>
                 </tr>
                 <tr>
+                    <td>🔴 <strong>1位</strong></td>
+                    <td><strong>多摩区</strong></td>
+                    <td>登戸エリア (35.627, 139.567) に1台設置 → 効果最大</td>
+                </tr>
+                <tr>
+                    <td>🔴 <strong>2位</strong></td>
                     <td><strong>高津区</strong></td>
-                    <td>TOP10中6地域（久末、千年、蟹ケ谷、子母口、上作延）</td>
-                    <td>🔴 <strong>最優先</strong>: 久末・千年に複数AED追加設置</td>
+                    <td>久末 (35.564, 139.625) に追加設置</td>
                 </tr>
                 <tr>
+                    <td>🟠 <strong>3位</strong></td>
                     <td><strong>麻生区</strong></td>
-                    <td>岡上・黒川がカバー率20〜30%台</td>
-                    <td>🔴 広大な町丁に複数AED設置</td>
+                    <td>岡上・黒川に複数AED設置</td>
                 </tr>
                 <tr>
+                    <td>🟠 <strong>4位</strong></td>
                     <td><strong>川崎区</strong></td>
-                    <td>港町がカバー率24%と低い</td>
-                    <td>🟠 港町エリアへの追加設置</td>
-                </tr>
-                <tr>
-                    <td><strong>中原区</strong></td>
-                    <td>上平間がカバー率66%</td>
-                    <td>🟢 町丁内の未カバー部分に追加</td>
+                    <td>港町エリアへの追加設置</td>
                 </tr>
             </table>
             
-            <h3>低カバー率地域への緊急対応</h3>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li><strong>高津区 久末:</strong> カバー率31.2%、カバー外リスク717,465 → 複数箇所に追加設置が最優先</li>
-                <li><strong>麻生区 黒川:</strong> カバー率21.1%、最大規模の町丁 → 3〜4台の追加設置推奨</li>
-                <li><strong>川崎区 港町:</strong> カバー率24.0% → 川崎区内で最も対応が必要</li>
-            </ul>
-            
-            <h3>大規模町丁への対応</h3>
-            <p>300mカバー範囲では、多くの大規模町丁で<strong>複数のAED設置</strong>が必要です。特に久末、岡上、黒川などは1台では町丁全体をカバーできず、3〜5台の配置が理想的です。</p>
+            <h3>具体的な設置座標（TOP3）</h3>
+            <ol style="margin-left: 20px; line-height: 2;">
+                <li><strong>(35.6267, 139.5666)</strong> - 多摩区登戸 → 新規カバー 754,696</li>
+                <li><strong>(35.6262, 139.5666)</strong> - 多摩区登戸 → 新規カバー 751,390</li>
+                <li><strong>(35.6258, 139.5666)</strong> - 多摩区登戸 → 新規カバー 748,084</li>
+            </ol>
         </section>
 
         <!-- データソース -->
         <section>
-            <h2>📚 5. データソースと分析手法</h2>
+            <h2>📚 6. データソースと分析手法</h2>
             
             <table>
                 <tr>
@@ -530,3 +609,4 @@
     </footer>
 </body>
 </html>
+
