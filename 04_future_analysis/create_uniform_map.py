@@ -4,16 +4,9 @@
 import pandas as pd
 import folium
 
-# データ読み込み
+# データ読み込み（緯度経度はCSVに含まれている）
 df_rec = pd.read_csv('uniform_model_recommendations.csv')
-df_results = pd.read_csv('uniform_model_results.csv')
 df_aed = pd.read_csv('../01_aed_data/kawasaki_aed_merged.csv')
-
-# 座標情報をマッチング
-df_pop = pd.read_csv('chocho_analysis_all_years.csv')
-df_pop_coords = df_pop.groupby(['区', '町丁名']).agg({'緯度': 'first', '経度': 'first'}).reset_index()
-
-df_rec = df_rec.merge(df_pop_coords, on=['区', '町丁名'], how='left')
 
 # マップ作成
 center_lat = 35.57

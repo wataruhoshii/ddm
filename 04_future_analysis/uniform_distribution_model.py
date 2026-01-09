@@ -186,6 +186,11 @@ def main():
         ward = feat['ward']
         chocho_name = feat['chocho_name']
         
+        # ポリゴンの重心座標を取得
+        centroid = polygon.centroid
+        centroid_lat = centroid.y
+        centroid_lon = centroid.x
+        
         # グリッド点生成
         grid_points = generate_grid_points(polygon, GRID_SPACING)
         
@@ -226,6 +231,8 @@ def main():
         results.append({
             '区': ward,
             '町丁名': chocho_name,
+            '緯度': round(centroid_lat, 6),
+            '経度': round(centroid_lon, 6),
             'グリッド点数': len(grid_points),
             'カバー率': round(coverage_rate * 100, 1),
             '総人口_累計': int(total_pop),
