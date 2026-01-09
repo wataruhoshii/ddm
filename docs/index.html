@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>川崎市AED最適配置分析レポート</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>川崎市AED最適配置分析レポート - 将来予測版</title>
     <style>
         :root {
-            --primary: #1a365d;
-            --secondary: #2c5282;
-            --accent: #ed8936;
-            --danger: #e53e3e;
-            --success: #38a169;
+            --primary: #2c5282;
+            --primary-light: #4299e1;
+            --secondary: #38a169;
+            --warning: #dd6b20;
+            --danger: #c53030;
             --bg-light: #f7fafc;
             --bg-dark: #1a202c;
-            --text: #2d3748;
+            --text-dark: #2d3748;
             --text-light: #718096;
+            --future-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
         * {
@@ -25,108 +25,95 @@
         }
         
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background: var(--bg-light);
-            color: var(--text);
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
             line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-light);
         }
         
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--future-gradient);
             color: white;
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
             margin: 0 auto;
         }
         
         .hero .date {
-            margin-top: 30px;
+            margin-top: 15px;
             font-size: 0.9rem;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
         
         section {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         
         h2 {
             color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-light);
         }
         
         h3 {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin: 30px 0 15px;
-        }
-        
-        p {
-            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin: 25px 0 15px 0;
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin: 30px 0;
+            margin: 25px 0;
         }
         
         .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+            border-radius: 10px;
             padding: 25px;
-            border-radius: 12px;
             text-align: center;
+            border-left: 4px solid var(--primary);
         }
         
-        .stat-card.green {
-            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-        }
-        
-        .stat-card.orange {
-            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
-        }
-        
-        .stat-card.red {
-            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
-        }
+        .stat-card.green { border-left-color: var(--secondary); }
+        .stat-card.orange { border-left-color: var(--warning); }
+        .stat-card.red { border-left-color: var(--danger); }
+        .stat-card.purple { border-left-color: #805ad5; }
         
         .stat-card .number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
+            color: var(--text-dark);
         }
         
         .stat-card .label {
+            color: var(--text-light);
             font-size: 0.9rem;
-            opacity: 0.9;
             margin-top: 5px;
         }
         
@@ -134,6 +121,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            font-size: 0.95rem;
         }
         
         th, td {
@@ -143,9 +131,9 @@
         }
         
         th {
-            background: var(--bg-light);
-            font-weight: 500;
-            color: var(--primary);
+            background: #edf2f7;
+            font-weight: 600;
+            color: var(--text-dark);
         }
         
         tr:hover {
@@ -153,124 +141,77 @@
         }
         
         .highlight {
-            background: #fffbeb;
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            margin: 20px 0;
+            background: #ebf8ff;
+            border-left: 4px solid var(--primary-light);
+            padding: 15px 20px;
             border-radius: 0 8px 8px 0;
-        }
-        
-        .highlight.danger {
-            background: #fff5f5;
-            border-left-color: var(--danger);
+            margin: 20px 0;
         }
         
         .highlight.success {
             background: #f0fff4;
-            border-left-color: var(--success);
+            border-left-color: var(--secondary);
         }
         
-        .source {
-            background: #edf2f7;
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin: 20px 0;
+        .highlight.warning {
+            background: #fffaf0;
+            border-left-color: var(--warning);
         }
         
-        .source h4 {
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-        
-        .source ul {
-            margin-left: 20px;
-        }
-        
-        .source li {
-            margin-bottom: 5px;
-        }
-        
-        .source a {
-            color: var(--secondary);
+        .highlight.future {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-left-color: #805ad5;
         }
         
         .badge {
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .badge.red {
-            background: #fed7d7;
-            color: #c53030;
-        }
-        
-        .badge.orange {
-            background: #feebc8;
-            color: #c05621;
-        }
-        
-        .badge.green {
-            background: #c6f6d5;
-            color: #276749;
-        }
-        
-        .methodology {
-            background: #ebf8ff;
-            padding: 25px;
+            padding: 3px 10px;
             border-radius: 12px;
-            margin: 20px 0;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
         
-        .methodology h4 {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        
-        .formula {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.95rem;
-            margin: 10px 0;
-            border: 1px solid #bee3f8;
-        }
+        .badge.green { background: #c6f6d5; color: #22543d; }
+        .badge.orange { background: #feebc8; color: #744210; }
+        .badge.red { background: #fed7d7; color: #742a2a; }
+        .badge.purple { background: #e9d8fd; color: #44337a; }
         
         .ranking-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             padding: 20px;
-            background: var(--bg-light);
-            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
             margin-bottom: 15px;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
         
         .ranking-item:hover {
-            transform: translateX(5px);
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(66, 153, 225, 0.15);
         }
         
         .rank-number {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             font-weight: 700;
+            font-size: 1.2rem;
             margin-right: 20px;
             flex-shrink: 0;
         }
         
         .rank-number.top3 {
-            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            background: var(--future-gradient);
+        }
+        
+        .rank-number.rapid {
+            background: var(--danger);
         }
         
         .ranking-content {
@@ -278,95 +219,172 @@
         }
         
         .ranking-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
         }
         
         .ranking-stats {
             display: flex;
-            gap: 20px;
-            margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 15px;
             font-size: 0.9rem;
             color: var(--text-light);
         }
         
-        .strategy-card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 15px 0;
-        }
-        
-        .strategy-card h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .strategy-card ul {
-            margin-left: 25px;
-        }
-        
-        .strategy-card li {
-            margin-bottom: 8px;
-        }
-        
-        .map-link {
+        .future-change {
             display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin: 10px 5px;
-            transition: background 0.3s;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
         }
         
-        .map-link:hover {
-            background: var(--primary);
+        .future-change.high { background: #fed7d7; color: #c53030; }
+        .future-change.medium { background: #feebc8; color: #c05621; }
+        .future-change.low { background: #c6f6d5; color: #276749; }
+        
+        .map-container {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            margin: 20px 0;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .chart-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .chart-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .methodology {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .methodology h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .formula {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin: 10px 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .source {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .source h4 {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .source ul {
+            margin-left: 20px;
+        }
+        
+        .source a {
+            color: var(--primary);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--warning) 50%, var(--danger) 100%);
+            z-index: 0;
+        }
+        
+        .timeline-point {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1;
+            border: 2px solid #e2e8f0;
+            min-width: 100px;
+        }
+        
+        .timeline-point.current {
+            border-color: var(--secondary);
+            background: #f0fff4;
+        }
+        
+        .timeline-point.future {
+            border-color: var(--danger);
+            background: #fff5f5;
+        }
+        
+        .timeline-point .year {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-point .value {
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
         
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--bg-dark);
-            color: white;
-        }
-        
-        footer p {
-            opacity: 0.7;
+            padding: 30px;
+            color: var(--text-light);
             font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 25px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .ranking-stats {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
+            .hero h1 { font-size: 1.6rem; }
+            section { padding: 25px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .ranking-stats { flex-direction: column; gap: 8px; }
+            .timeline { flex-direction: column; gap: 15px; }
+            .timeline::before { display: none; }
         }
     </style>
 </head>
 <body>
     <header class="hero">
-        <h1>🏥 川崎市AED最適配置分析レポート</h1>
-        <p>データに基づいた科学的アプローチで、心停止リスクを考慮したAED設置の最適化を提案します</p>
-        <p class="date">分析日: 2026年1月4日</p>
+        <h1>🔮 川崎市AED最適配置分析レポート</h1>
+        <p>2025年〜2070年の人口推計データに基づき、将来にわたって多くの命を救えるAED配置を提案します</p>
+        <p class="date">分析日: 2026年1月9日 ｜ データ: 川崎市将来人口推計</p>
     </header>
 
     <div class="container">
@@ -374,285 +392,256 @@
         <section>
             <h2>📋 エグゼクティブサマリー</h2>
             
-            <p style="margin-bottom: 15px; padding: 15px; background: #edf2f7; border-radius: 8px; font-size: 0.95rem;">
-                📐 <strong>カバー範囲の定義:</strong> 本分析では、AEDから<strong>500m圏内</strong>を「カバー範囲」と定義しています。これは心停止発生から除細動までの目標時間（3〜5分）内に、AEDを取りに行き戻ってくることが可能な距離として設定しています。
-            </p>
-            <p style="margin-bottom: 20px; padding: 15px; background: #ebf8ff; border-radius: 8px; font-size: 0.95rem;">
-                ⚖️ <strong>リスク加重カバー率:</strong> 単純な人口カバー率ではなく、年齢別の心停止発生リスクで重み付けしたカバー率です。高齢者ほど心停止リスクが高いため、高齢者が多い地域のカバー状況をより重視した指標となっています。
-            </p>
+            <div class="highlight future">
+                <strong>🔮 将来予測のポイント:</strong> 川崎市の総人口は2035年をピークに緩やかに減少しますが、<strong>高齢化により心停止リスク加重人口は2025年から2060年にかけて約42%増加</strong>します。現在のAED配置を維持した場合でもカバー率は98%を維持しますが、リスクの高い地域が変化するため、<strong>将来を見据えた戦略的配置</strong>が重要です。
+            </div>
+            
+            <h3>人口動態の変化（2025年 → 2045年 → 2070年）</h3>
+            <div class="timeline">
+                <div class="timeline-point current">
+                    <div class="year">2025年</div>
+                    <div class="value">155.7万人</div>
+                    <div class="value">高齢化率 20.7%</div>
+                </div>
+                <div class="timeline-point">
+                    <div class="year">2045年</div>
+                    <div class="value">156.6万人</div>
+                    <div class="value">高齢化率 29.3%</div>
+                </div>
+                <div class="timeline-point future">
+                    <div class="year">2070年</div>
+                    <div class="value">139.0万人</div>
+                    <div class="value">高齢化率 31.3%</div>
+                </div>
+            </div>
             
             <div class="stats-grid">
+                <div class="stat-card purple">
+                    <div class="number">+30.5%</div>
+                    <div class="label">リスク加重人口の増加<br>(2025→2045)</div>
+                </div>
                 <div class="stat-card green">
-                    <div class="number">97.2%</div>
-                    <div class="label">リスク加重カバー率</div>
+                    <div class="number">98.3%</div>
+                    <div class="label">現在のリスク加重カバー率<br>(2025年)</div>
                 </div>
                 <div class="stat-card orange">
                     <div class="number">32</div>
                     <div class="label">AED空白町丁数</div>
                 </div>
                 <div class="stat-card red">
-                    <div class="number">45,054</div>
-                    <div class="label">カバー外人口</div>
+                    <div class="number">28,406</div>
+                    <div class="label">カバー外人口<br>(2025年)</div>
                 </div>
             </div>
             
-            <div class="highlight success">
-                <strong>主な発見:</strong> 川崎市のAEDカバー率は高水準（97%以上）ですが、年齢別心停止リスクで重み付けすると、特に高齢化が進む住宅街を中心に32の町丁がAED空白地帯として残っています。戦略的な10箇所への新規設置により、リスク加重カバー率を99%以上に向上できる可能性があります。
-            </div>
+            <p style="margin-top: 15px; padding: 15px; background: #edf2f7; border-radius: 8px; font-size: 0.95rem;">
+                📐 <strong>カバー範囲の定義:</strong> AEDから<strong>500m圏内</strong>を「カバー範囲」と定義。心停止発生から除細動までの目標時間（3〜5分）内にAEDを取得可能な距離として設定。
+            </p>
         </section>
 
-        <!-- 1. AEDデータ取得 -->
+        <!-- 将来人口推移 -->
         <section>
-            <h2>📍 1. AED分布データの取得</h2>
+            <h2>📈 1. 川崎市の将来人口推移とリスク変化</h2>
             
-            <p>川崎市内のAED設置状況を把握するため、複数のデータソースから情報を収集・統合しました。</p>
+            <p>川崎市が公表している町丁別将来人口推計（令和7年〜令和52年）を分析しました。</p>
             
-            <h3>データソースと件数</h3>
+            <h3>人口とリスク加重人口の推移</h3>
             <table>
                 <tr>
-                    <th>データソース</th>
-                    <th>件数</th>
-                    <th>内容</th>
+                    <th>年</th>
+                    <th>総人口</th>
+                    <th>高齢者人口</th>
+                    <th>高齢化率</th>
+                    <th>リスク加重人口</th>
+                    <th>カバー率</th>
                 </tr>
                 <tr>
-                    <td>川崎市オープンデータ</td>
-                    <td>617件</td>
-                    <td>公共施設のAED（市役所、学校、公民館など）</td>
+                    <td><strong>2025年</strong></td>
+                    <td>1,557,369人</td>
+                    <td>322,238人</td>
+                    <td>20.7%</td>
+                    <td>7,806,661</td>
+                    <td>98.3%</td>
                 </tr>
                 <tr>
-                    <td>全国AEDマップ（日本AED財団）</td>
-                    <td>667件</td>
-                    <td>民間施設含む登録AED</td>
+                    <td>2030年</td>
+                    <td>1,580,869人</td>
+                    <td>354,471人</td>
+                    <td>22.4%</td>
+                    <td>8,674,645</td>
+                    <td>98.2%</td>
                 </tr>
                 <tr>
-                    <td>セブン-イレブン設置リスト</td>
-                    <td>208件</td>
-                    <td>川崎市協定によるコンビニAED</td>
+                    <td>2035年</td>
+                    <td>1,592,472人</td>
+                    <td>396,146人</td>
+                    <td>24.9%</td>
+                    <td>9,321,902</td>
+                    <td>98.2%</td>
                 </tr>
-                <tr style="background: #f7fafc; font-weight: 500;">
-                    <td>統合後（重複除去）</td>
-                    <td><strong>936件</strong></td>
-                    <td>川崎市内の把握可能なAED</td>
+                <tr style="background: #fffaf0;">
+                    <td><strong>2045年</strong></td>
+                    <td>1,565,620人</td>
+                    <td>458,924人</td>
+                    <td>29.3%</td>
+                    <td>10,184,027 <span class="badge orange">+30.5%</span></td>
+                    <td>98.1%</td>
+                </tr>
+                <tr>
+                    <td>2060年</td>
+                    <td>1,474,636人</td>
+                    <td>449,298人</td>
+                    <td>30.5%</td>
+                    <td>11,070,835 <span class="badge red">+41.8%</span></td>
+                    <td>98.0%</td>
+                </tr>
+                <tr style="background: #fff5f5;">
+                    <td><strong>2070年</strong></td>
+                    <td>1,389,859人</td>
+                    <td>435,078人</td>
+                    <td>31.3%</td>
+                    <td>10,384,474 <span class="badge orange">+33.0%</span></td>
+                    <td>98.0%</td>
                 </tr>
             </table>
+            
+            <div class="highlight warning">
+                <strong>⚠️ 重要な発見:</strong> 総人口は2035年をピークに減少に転じますが、高齢化の進行により<strong>リスク加重人口は2060年まで増加</strong>し続けます。現状のAED配置を維持してもカバー率は98%を維持しますが、<strong>リスクの高い地域が変化</strong>するため、将来を見据えた配置最適化が必要です。
+            </div>
+            
+            <div class="chart-container">
+                <img src="future_analysis_charts.png" alt="将来人口推移グラフ">
+            </div>
             
             <div class="source">
                 <h4>📚 出典</h4>
                 <ul>
-                    <li><a href="https://www.city.kawasaki.jp/350/page/0000099784.html" target="_blank">川崎市オープンデータ - AED設置場所一覧</a></li>
-                    <li><a href="https://www.qqzaidanmap.jp/" target="_blank">日本AED財団 全国AEDマップ</a></li>
-                    <li><a href="https://www.city.kawasaki.jp/" target="_blank">川崎市・セブン-イレブン AED設置協定（2025年10月〜）</a></li>
+                    <li>川崎市「町丁別将来人口推計」（令和7年〜令和52年、5年ごと）</li>
+                    <li>データには町丁ごとの座標（経度・緯度）が含まれており、空間分析に使用</li>
                 </ul>
             </div>
         </section>
 
-        <!-- 2. 年齢別リスク重み付け -->
+        <!-- 年齢別リスク重み -->
         <section>
-            <h2>⚖️ 2. 年齢別心停止リスクによる重み付け分析</h2>
+            <h2>⚖️ 2. 年齢別心停止リスクによる重み付け</h2>
             
-            <p>心停止（院外心停止: OHCA）の発生率は年齢によって大きく異なります。疫学研究に基づき、5歳階級別のリスク重みを設定し、より実態に即した評価を行いました。</p>
+            <p>院外心停止（OHCA）の発生率は年齢によって大きく異なります。疫学研究に基づき、5歳階級別のリスク重みを設定しました。</p>
             
             <div class="methodology">
                 <h4>🔬 方法論</h4>
-                <p>院外心停止の年齢別発生率（人口10万人あたり/年）に基づき、40-44歳を基準（1.0）としたリスク重みを設定しました。</p>
+                <p>院外心停止の年齢別発生率（人口10万人あたり/年）に基づき、40-44歳を基準（1.0）としたリスク重みを設定。</p>
                 <div class="formula">
-                    リスク加重人口 = Σ（各年齢階級の人口 × リスク重み）
+                    リスク加重人口 = Σ（各年齢階級の人口 × リスク重み）<br>
+                    将来重視スコア = 2045年リスク加重人口×0.5 + 2025年リスク加重人口×0.3 + 増加分×0.2
                 </div>
             </div>
             
-            <h3>年齢別リスク重み（5歳階級）</h3>
+            <h3>主要年齢階級のリスク重み</h3>
             <table>
                 <tr>
                     <th>年齢階級</th>
-                    <th>推定発生率<br>(10万人あたり/年)</th>
+                    <th>リスク重み</th>
+                    <th>年齢階級</th>
                     <th>リスク重み</th>
                 </tr>
                 <tr>
-                    <td>0〜4歳</td>
-                    <td>2</td>
-                    <td><span class="badge green">0.04</span></td>
-                </tr>
-                <tr>
-                    <td>5〜9歳</td>
-                    <td>1</td>
-                    <td><span class="badge green">0.02</span></td>
-                </tr>
-                <tr>
-                    <td>10〜14歳</td>
-                    <td>2</td>
-                    <td><span class="badge green">0.04</span></td>
-                </tr>
-                <tr>
-                    <td>15〜19歳</td>
-                    <td>5</td>
-                    <td><span class="badge green">0.11</span></td>
-                </tr>
-                <tr>
-                    <td>20〜24歳</td>
-                    <td>8</td>
-                    <td><span class="badge green">0.18</span></td>
-                </tr>
-                <tr>
-                    <td>25〜29歳</td>
-                    <td>12</td>
-                    <td><span class="badge green">0.27</span></td>
-                </tr>
-                <tr>
-                    <td>30〜34歳</td>
-                    <td>18</td>
-                    <td><span class="badge green">0.40</span></td>
-                </tr>
-                <tr>
-                    <td>35〜39歳</td>
-                    <td>28</td>
-                    <td><span class="badge green">0.62</span></td>
-                </tr>
-                <tr style="background: #ebf8ff;">
-                    <td>40〜44歳（基準）</td>
-                    <td>45</td>
-                    <td><strong>1.00</strong></td>
-                </tr>
-                <tr>
-                    <td>45〜49歳</td>
-                    <td>70</td>
-                    <td>1.56</td>
-                </tr>
-                <tr>
-                    <td>50〜54歳</td>
-                    <td>100</td>
-                    <td>2.22</td>
-                </tr>
-                <tr>
-                    <td>55〜59歳</td>
-                    <td>140</td>
-                    <td>3.11</td>
-                </tr>
-                <tr>
+                    <td>0〜19歳</td>
+                    <td><span class="badge green">0.02〜0.11</span></td>
                     <td>60〜64歳</td>
-                    <td>190</td>
-                    <td><span class="badge orange">4.22</span></td>
+                    <td><span class="badge orange">5.60</span></td>
                 </tr>
                 <tr>
-                    <td>65〜69歳</td>
-                    <td>260</td>
-                    <td><span class="badge orange">5.78</span></td>
+                    <td>20〜39歳</td>
+                    <td><span class="badge green">0.18〜0.62</span></td>
+                    <td>65〜74歳</td>
+                    <td><span class="badge orange">8.44〜12.44</span></td>
                 </tr>
                 <tr>
-                    <td>70〜74歳</td>
-                    <td>350</td>
-                    <td><span class="badge orange">7.78</span></td>
+                    <td>40〜44歳（基準）</td>
+                    <td><span class="badge green">1.00</span></td>
+                    <td>75〜84歳</td>
+                    <td><span class="badge red">17.78〜24.44</span></td>
                 </tr>
                 <tr>
-                    <td>75〜79歳</td>
-                    <td>450</td>
-                    <td><span class="badge red">10.00</span></td>
-                </tr>
-                <tr>
-                    <td>80〜84歳</td>
-                    <td>550</td>
-                    <td><span class="badge red">12.22</span></td>
-                </tr>
-                <tr>
-                    <td>85〜89歳</td>
-                    <td>650</td>
-                    <td><span class="badge red">14.44</span></td>
-                </tr>
-                <tr>
-                    <td>90〜94歳</td>
-                    <td>700</td>
-                    <td><span class="badge red">15.56</span></td>
-                </tr>
-                <tr>
-                    <td>95歳以上</td>
-                    <td>750</td>
-                    <td><span class="badge red">16.67</span></td>
+                    <td>45〜59歳</td>
+                    <td><span class="badge orange">1.60〜3.78</span></td>
+                    <td>85歳以上</td>
+                    <td><span class="badge red">31.11〜35.56</span></td>
                 </tr>
             </table>
-            
-            <div class="highlight danger">
-                <strong>重要な発見:</strong> 65歳以上の高齢者は人口の約17%ですが、心停止リスクの約65%を占めています。高齢化が進む地域へのAED配置が特に重要です。
-            </div>
-            
-            <div class="source">
-                <h4>📚 心停止発生率の出典</h4>
-                <ul>
-                    <li>日本循環器学会「心血管疾患における疫学調査」</li>
-                    <li>総務省消防庁「救急・救助の現況」年齢別データ</li>
-                    <li>Berdowski J, et al. "Global incidences of out-of-hospital cardiac arrest and survival rates" Resuscitation 2010</li>
-                    <li>Iwami T, et al. "Continuous improvement in out-of-hospital cardiac arrest survival" Circulation 2009</li>
-                </ul>
-            </div>
         </section>
 
-        <!-- 4. TOP10推奨地域 -->
+        <!-- 将来重視TOP10 -->
         <section>
-            <h2>🎯 3. AED設置推奨地域 TOP10</h2>
+            <h2>🎯 3. 将来を見据えたAED設置推奨地域 TOP10</h2>
             
-            <p>リスク加重人口、最寄りAEDまでの距離、高齢化率を総合的に評価し、AED新規設置の優先度が高い10地域を特定しました。</p>
+            <p>2025年の現状だけでなく、<strong>2045年までのリスク加重人口の変化</strong>を考慮した優先順位を算出しました。特に<strong>将来的にリスクが急増する地域</strong>を重視しています。</p>
             
-            <div style="margin: 30px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <iframe src="aed_placement_recommendation_map.html" width="100%" height="500" style="border: none;"></iframe>
-                <p style="text-align: center; padding: 10px; background: #f7fafc; margin: 0; font-size: 0.9rem; color: #718096;">
-                    🔴 TOP10推奨地域 | 🟠 その他のAED空白地帯 | 🟢 既存AED（マップをクリックで詳細表示）
-                </p>
+            <div class="map-container">
+                <iframe src="future_aed_recommendation_map.html"></iframe>
             </div>
             
             <div class="ranking-item">
                 <div class="rank-number top3">1</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 堰１丁目</div>
+                    <div class="ranking-title">多摩区 堰一丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 3,587人</span>
-                        <span>👴 高齢者849人（23.7%）</span>
-                        <span>📏 最寄りAED: 530m</span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 1km圏内にセブン-イレブン3店舗あり。既存コンビニへのAED設置または公民館の活用が有効。
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number top3">2</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">麻生区 東百合丘１丁目</div>
-                    <div class="ranking-stats">
-                        <span>👥 2,531人</span>
-                        <span>👴 高齢者672人（26.6%）</span>
-                        <span>📏 最寄りAED: 510m</span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 高齢化率が高い丘陵住宅地。1km圏内にセブン-イレブン1店舗のみ。薬局やドラッグストアへの設置が有効。
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number top3">3</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">川崎区 田島町 <span class="badge red">真の空白地帯</span></div>
-                    <div class="ranking-stats">
-                        <span>👥 2,056人</span>
-                        <span>👴 高齢者600人（29.2%）</span>
-                        <span>📏 最寄りAED: 1,190m</span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
-                        ⚠️ 最寄りAEDが1km以上と最も深刻。高齢化率も29%と高い。1km圏内にセブン-イレブンなし。薬局・クリニックへの緊急設置を推奨。
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ranking-item">
-                <div class="rank-number">4</div>
-                <div class="ranking-content">
-                    <div class="ranking-title">宮前区 鷺沼４丁目</div>
-                    <div class="ranking-stats">
-                        <span>👥 4,094人</span>
-                        <span>👴 高齢者590人（14.4%）</span>
+                        <span>👥 人口: 3,777人→3,671人</span>
+                        <span>📊 リスク加重: 20,781→23,399</span>
+                        <span class="future-change low">+13%</span>
                         <span>📏 最寄りAED: 520m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 人口が多く若年層も多い住宅街。1km圏内にセブン-イレブン3店舗あり、コンビニ設置が最適。
+                        💡 現在・将来ともにリスク加重人口が最大の空白地帯。安定した高リスク地域のため、最優先で設置すべき。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number rapid">2</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">麻生区 黒川 <span class="badge red">急増地域</span></div>
+                    <div class="ranking-stats">
+                        <span>👥 人口: 3,464人→3,665人</span>
+                        <span>📊 リスク加重: 13,019→23,380</span>
+                        <span class="future-change high">+80%</span>
+                        <span>📏 最寄りAED: 500m</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
+                        ⚠️ 20年間でリスク加重人口が<strong>80%増加</strong>する急成長地域。新興住宅地の高齢化が進行。今からの設置が将来の命を救う。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number rapid">3</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">麻生区 片平四丁目 <span class="badge red">急増地域</span></div>
+                    <div class="ranking-stats">
+                        <span>👥 人口: 2,772人→2,830人</span>
+                        <span>📊 リスク加重: 12,248→21,039</span>
+                        <span class="future-change high">+72%</span>
+                        <span>📏 最寄りAED: 550m</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
+                        ⚠️ リスク加重人口が<strong>72%増加</strong>。片平小学校周辺の住宅地。コンビニまたは公共施設への設置が有効。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-item">
+                <div class="rank-number rapid">4</div>
+                <div class="ranking-content">
+                    <div class="ranking-title">麻生区 白鳥四丁目 <span class="badge red">最急増</span></div>
+                    <div class="ranking-stats">
+                        <span>👥 人口: 2,549人→2,635人</span>
+                        <span>📊 リスク加重: 10,340→20,007</span>
+                        <span class="future-change high">+94%</span>
+                        <span>📏 最寄りAED: 540m</span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
+                        ⚠️ TOP10中<strong>最大の増加率94%</strong>。白鳥中学校周辺。将来を見据えた最重要設置候補地の一つ。
                     </div>
                 </div>
             </div>
@@ -660,29 +649,31 @@
             <div class="ranking-item">
                 <div class="rank-number">5</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 宿河原７丁目</div>
+                    <div class="ranking-title">多摩区 宿河原七丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 2,248人</span>
-                        <span>👴 高齢者515人（22.9%）</span>
-                        <span>📏 最寄りAED: 560m</span>
+                        <span>👥 人口: 2,344人→2,282人</span>
+                        <span>📊 リスク加重: 12,632→14,606</span>
+                        <span class="future-change low">+16%</span>
+                        <span>📏 最寄りAED: 550m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 1km圏内にセブン-イレブン3店舗あり。緑化センター周辺へのアクセス向上のため、コンビニ設置が有効。
+                        💡 安定した高リスク地域。緑化センター周辺へのアクセス向上のため、コンビニ設置が有効。
                     </div>
                 </div>
             </div>
             
             <div class="ranking-item">
-                <div class="rank-number">6</div>
+                <div class="rank-number rapid">6</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 片平４丁目</div>
+                    <div class="ranking-title">宮前区 有馬九丁目 <span class="badge red">急増地域</span></div>
                     <div class="ranking-stats">
-                        <span>👥 2,747人</span>
-                        <span>👴 高齢者502人（18.3%）</span>
-                        <span>📏 最寄りAED: 540m</span>
+                        <span>👥 人口: 1,939人→2,011人</span>
+                        <span>📊 リスク加重: 8,215→14,997</span>
+                        <span class="future-change high">+83%</span>
+                        <span>📏 最寄りAED: 510m</span>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 1km圏内にセブン-イレブン2店舗あり。コンビニまたは片平小学校周辺の公共施設が候補。
+                    <div style="margin-top: 10px; font-size: 0.9rem; color: #c53030;">
+                        ⚠️ リスク加重人口が<strong>83%増加</strong>。有馬小学校周辺の住宅街。将来の高齢化に備えた設置が必要。
                     </div>
                 </div>
             </div>
@@ -690,14 +681,15 @@
             <div class="ranking-item">
                 <div class="rank-number">7</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 西生田５丁目</div>
+                    <div class="ranking-title">多摩区 西生田五丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 1,835人</span>
-                        <span>👴 高齢者459人（25.0%）</span>
-                        <span>📏 最寄りAED: 580m</span>
+                        <span>👥 人口: 1,955人→1,845人</span>
+                        <span>📊 リスク加重: 11,143→12,190</span>
+                        <span class="future-change low">+9%</span>
+                        <span>📏 最寄りAED: 600m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 高齢化率25%の丘陵住宅地。1km圏内にセブン-イレブン2店舗あり。薬局やドラッグストアへの設置も有効。
+                        💡 高齢化率が既に高い丘陵住宅地。薬局やドラッグストアへの設置が有効。
                     </div>
                 </div>
             </div>
@@ -705,14 +697,15 @@
             <div class="ranking-item">
                 <div class="rank-number">8</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 白鳥４丁目</div>
+                    <div class="ranking-title">多摩区 菅野戸呂</div>
                     <div class="ranking-stats">
-                        <span>👥 2,450人</span>
-                        <span>👴 高齢者402人（16.4%）</span>
-                        <span>📏 最寄りAED: 530m</span>
+                        <span>👥 人口: 1,942人→1,935人</span>
+                        <span>📊 リスク加重: 8,849→11,699</span>
+                        <span class="future-change medium">+32%</span>
+                        <span>📏 最寄りAED: 610m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 1km圏内にセブン-イレブン2店舗あり。白鳥中学校が最寄りだが、コンビニ設置でカバー範囲拡大が可能。
+                        💡 多摩川沿いの住宅地。コンビニ設置が最も効果的。
                     </div>
                 </div>
             </div>
@@ -720,14 +713,15 @@
             <div class="ranking-item">
                 <div class="rank-number">9</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">宮前区 有馬９丁目</div>
+                    <div class="ranking-title">麻生区 細山四丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 1,908人</span>
-                        <span>👴 高齢者341人（17.9%）</span>
-                        <span>📏 最寄りAED: 520m</span>
+                        <span>👥 人口: 1,484人→1,486人</span>
+                        <span>📊 リスク加重: 7,423→11,362</span>
+                        <span class="future-change medium">+53%</span>
+                        <span>📏 最寄りAED: 580m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 有馬小学校周辺の住宅街。1km圏内にセブン-イレブン2店舗あり。コンビニまたは公共施設への設置が有効。
+                        💡 丘陵地の住宅街。リスク加重人口が53%増加予測。
                     </div>
                 </div>
             </div>
@@ -735,142 +729,124 @@
             <div class="ranking-item">
                 <div class="rank-number">10</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 菅野戸呂</div>
+                    <div class="ranking-title">麻生区 栗木一丁目</div>
                     <div class="ranking-stats">
-                        <span>👥 1,834人</span>
-                        <span>👴 高齢者300人（16.4%）</span>
-                        <span>📏 最寄りAED: 550m</span>
+                        <span>👥 人口: 1,097人→1,092人</span>
+                        <span>📊 リスク加重: 5,620→8,908</span>
+                        <span class="future-change medium">+59%</span>
+                        <span>📏 最寄りAED: 570m</span>
                     </div>
                     <div style="margin-top: 10px; font-size: 0.9rem; color: #4a5568;">
-                        💡 多摩川沿いの住宅地。1km圏内にセブン-イレブン2店舗あり。コンビニ設置が最も効果的。
+                        💡 小田急多摩線沿線の住宅地。リスク加重人口が59%増加予測。
                     </div>
                 </div>
             </div>
             
             <div class="highlight success">
-                <strong>期待される効果:</strong> TOP10の場所すべてにAEDを設置した場合、リスク加重カバー率は97.2%から約99.7%に向上します。
+                <strong>🎯 将来重視分析の特徴:</strong> TOP10のうち<strong>5地域</strong>（黒川、片平四丁目、白鳥四丁目、有馬九丁目、栗木一丁目）は将来的にリスクが<strong>50%以上増加</strong>する地域です。特に麻生区は新興住宅地の高齢化が急速に進む見込みのため、<strong>今からの先行投資</strong>が多くの命を救うことにつながります。
             </div>
         </section>
 
-        <!-- 5. 戦略提案 -->
+        <!-- 戦略提案 -->
         <section>
-            <h2>💡 4. 新規AED設置の戦略提案</h2>
+            <h2>💡 4. 将来を見据えたAED設置戦略</h2>
             
-            <p>分析結果に基づき、効果的なAED設置を実現するための戦略を提案します。</p>
+            <p>分析結果に基づき、<strong>現在だけでなく将来にわたって効果を発揮する</strong>AED設置戦略を提案します。</p>
             
-            <div class="strategy-card">
-                <h4>🏪 戦略1: コンビニエンスストアの活用</h4>
-                <p>川崎市はセブン-イレブンとAED設置協定を結んでおり（2025年10月〜）、この取り組みを他のコンビニチェーンにも拡大することが効果的です。</p>
-                <ul>
-                    <li><strong>メリット:</strong> 24時間営業、全年齢層のアクセス、店舗網の広さ</li>
-                    <li><strong>優先対象:</strong> ファミリーマート、ローソン等（特にセブン-イレブンがない地域）</li>
-                    <li><strong>対象地域:</strong> 川崎区田島町（1km以内にセブン-イレブンなし、最寄りAED 1.2km）</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-card">
-                <h4>💊 戦略2: 調剤薬局・ドラッグストアの活用</h4>
-                <p>高齢化率が高い住宅街では、高齢者の日常的な利用頻度が高い薬局への設置が有効です。</p>
-                <ul>
-                    <li><strong>メリット:</strong> 高齢者の定期的な来店、医療従事者の存在</li>
-                    <li><strong>対象チェーン:</strong> ウエルシア、ツルハドラッグ、マツモトキヨシ等</li>
-                    <li><strong>対象地域:</strong> 麻生区東百合丘、多摩区西生田、川崎区田島町（高齢化率25%以上）</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-card">
-                <h4>🏫 戦略3: 公共施設・学校の活用</h4>
-                <p>地域センター、公民館、小中学校は地域の防災拠点として機能し、AED設置により安全性が向上します。</p>
-                <ul>
-                    <li><strong>メリット:</strong> 地域住民の認知度、災害時の拠点機能</li>
-                    <li><strong>注意点:</strong> 開館時間の制限（24時間対応には屋外設置が必要）</li>
-                    <li><strong>対象地域:</strong> コンビニが少ない住宅街エリア</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-card">
-                <h4>🏠 戦略4: 集合住宅への設置促進</h4>
-                <p>大規模マンションやUR団地への設置を促進し、居住者の安全性を高めます。</p>
-                <ul>
-                    <li><strong>メリット:</strong> 居住者へのアクセシビリティが高い</li>
-                    <li><strong>対象:</strong> 100戸以上の集合住宅、高齢者向け住宅</li>
-                    <li><strong>支援策:</strong> 設置費用の補助金制度、維持管理の支援</li>
-                </ul>
-            </div>
-            
-            <h3>📊 地域タイプ別の推奨設置先</h3>
-            <table>
-                <tr>
-                    <th>地域タイプ</th>
-                    <th>特徴</th>
-                    <th>第1推奨</th>
-                    <th>第2推奨</th>
-                    <th>第3推奨</th>
-                </tr>
-                <tr>
-                    <td><span class="badge red">高齢化住宅街</span></td>
-                    <td>高齢化率25%以上</td>
-                    <td>コンビニ</td>
-                    <td>調剤薬局</td>
-                    <td>クリニック</td>
-                </tr>
-                <tr>
-                    <td><span class="badge orange">一般住宅街</span></td>
-                    <td>高齢化率20-25%</td>
-                    <td>コンビニ</td>
-                    <td>地域センター</td>
-                    <td>スーパー</td>
-                </tr>
-                <tr>
-                    <td><span class="badge green">若年層エリア</span></td>
-                    <td>高齢化率20%未満</td>
-                    <td>コンビニ</td>
-                    <td>学校</td>
-                    <td>スポーツ施設</td>
-                </tr>
-            </table>
-        </section>
-
-        <!-- インタラクティブマップ -->
-        <section>
-            <h2>🗺️ インタラクティブマップ</h2>
-            <p>詳細な分析結果をインタラクティブマップで確認できます。</p>
-            
-            <div style="text-align: center; margin: 30px 0;">
-                <a href="aed_analysis_map.html" class="map-link">📍 総合分析マップ</a>
-                <a href="aed_elderly_heatmap.html" class="map-link">🔥 リスク加重ヒートマップ</a>
-                <a href="aed_blank_areas_map.html" class="map-link">⚠️ AED空白地帯マップ</a>
-                <a href="aed_placement_recommendation_map.html" class="map-link">🎯 設置推奨マップ</a>
-            </div>
-        </section>
-
-        <!-- 結論 -->
-        <section>
-            <h2>📝 結論</h2>
-            
-            <p>本分析により、川崎市のAED配置状況と最適化の方向性が明らかになりました。</p>
-            
-            <div class="highlight success">
-                <h4>主な成果</h4>
+            <div class="methodology" style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-left: 4px solid #805ad5;">
+                <h4>🔮 将来重視の配置原則</h4>
                 <ol style="margin-left: 20px; margin-top: 10px;">
-                    <li>3つのデータソースから936件のAED位置情報を統合</li>
-                    <li>674町丁の年齢別人口データとの空間分析を実施</li>
-                    <li>年齢別心停止リスクに基づく科学的な重み付け評価を導入</li>
-                    <li>AED設置優先度が高い10地域を特定</li>
-                    <li>コンビニ活用を中心とした実効性の高い設置戦略を提案</li>
+                    <li><strong>急増地域優先:</strong> リスク加重人口の増加率が高い地域（麻生区中心）を優先</li>
+                    <li><strong>安定高リスク地域:</strong> 現在も将来もリスクが高い地域（多摩区中心）を確保</li>
+                    <li><strong>長期運用を考慮:</strong> 20年以上の運用を想定した設置場所選定</li>
                 </ol>
             </div>
             
-            <p>特に、<strong>川崎区の港町・田島町・境町</strong>は「真のAED空白地帯」であり、優先的な対応が求められます。また、<strong>麻生区・多摩区の高齢化が進む住宅街</strong>では、薬局やドラッグストアへの設置も効果的です。</p>
+            <h3>地域別戦略</h3>
             
-            <p>本分析が、川崎市における救命率向上と市民の安全確保に貢献することを期待します。</p>
+            <table>
+                <tr>
+                    <th>区</th>
+                    <th>推奨地域数</th>
+                    <th>特徴</th>
+                    <th>戦略</th>
+                </tr>
+                <tr>
+                    <td><strong>麻生区</strong></td>
+                    <td>5地域</td>
+                    <td>リスク急増（+50〜94%）</td>
+                    <td>🔴 <strong>最優先</strong>: 今すぐ設置で将来効果最大</td>
+                </tr>
+                <tr>
+                    <td><strong>多摩区</strong></td>
+                    <td>4地域</td>
+                    <td>安定高リスク</td>
+                    <td>🟠 <strong>優先</strong>: 現在のカバー率向上</td>
+                </tr>
+                <tr>
+                    <td><strong>宮前区</strong></td>
+                    <td>1地域</td>
+                    <td>リスク急増（+83%）</td>
+                    <td>🟠 <strong>優先</strong>: 将来対策</td>
+                </tr>
+            </table>
+            
+            <h3>設置場所の候補</h3>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li><strong>コンビニエンスストア:</strong> 24時間アクセス可能、全世代が認知</li>
+                <li><strong>調剤薬局・ドラッグストア:</strong> 高齢者の利用頻度が高い</li>
+                <li><strong>公共施設（学校・公民館）:</strong> 地域の防災拠点、屋外設置で24時間対応可能</li>
+                <li><strong>大規模マンション:</strong> 居住者の高齢化に対応</li>
+            </ul>
+        </section>
+
+        <!-- データソース -->
+        <section>
+            <h2>📚 5. データソースと分析手法</h2>
+            
+            <h3>使用データ</h3>
+            <table>
+                <tr>
+                    <th>データ</th>
+                    <th>出典</th>
+                    <th>用途</th>
+                </tr>
+                <tr>
+                    <td>AED設置場所</td>
+                    <td>川崎市オープンデータ、全国AEDマップ、セブン-イレブン</td>
+                    <td>現状のカバー状況分析</td>
+                </tr>
+                <tr>
+                    <td>将来人口推計</td>
+                    <td>川崎市（R7〜R52、5年ごと）</td>
+                    <td>町丁別・年齢別の将来人口</td>
+                </tr>
+                <tr>
+                    <td>町丁座標</td>
+                    <td>川崎市将来人口推計データ内のX_CODE/Y_CODE</td>
+                    <td>空間分析（公式座標を使用）</td>
+                </tr>
+                <tr>
+                    <td>心停止発生率</td>
+                    <td>疫学研究（総務省消防庁等）</td>
+                    <td>年齢別リスク重みの設定</td>
+                </tr>
+            </table>
+            
+            <div class="source">
+                <h4>📚 参考文献・リンク</h4>
+                <ul>
+                    <li><a href="https://www.city.kawasaki.jp/" target="_blank">川崎市公式サイト</a></li>
+                    <li><a href="https://www.qqzaidanmap.jp/" target="_blank">日本AED財団 全国AEDマップ</a></li>
+                    <li><a href="https://www.fdma.go.jp/" target="_blank">総務省消防庁 救急統計</a></li>
+                </ul>
+            </div>
         </section>
     </div>
 
     <footer>
-        <p>川崎市AED最適配置分析レポート | 2026年1月4日作成</p>
-        <p>データ分析・可視化ツール: Python, Pandas, Folium, Matplotlib</p>
+        <p>川崎市AED最適配置分析レポート - 将来予測版</p>
+        <p>© 2026 データ分析プロジェクト</p>
     </footer>
 </body>
 </html>
-
