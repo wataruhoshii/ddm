@@ -8,8 +8,8 @@ import folium
 df_rec = pd.read_csv('grid_level_recommendations_grouped.csv')
 df_aed = pd.read_csv('../01_aed_data/kawasaki_aed_merged.csv')
 
-# TOP20
-df_top = df_rec.head(20)
+# TOP10
+df_top = df_rec.head(10)
 
 # マップ作成（登戸付近を中心に）
 center_lat = df_top['緯度'].mean()
@@ -84,7 +84,7 @@ legend_html = '''
 <div style="position: fixed; bottom: 50px; left: 50px; z-index: 1000; 
             background-color: white; padding: 15px; border-radius: 8px;
             border: 2px solid #e2e8f0; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-    <b style="font-size: 14px;">🎯 グリッドレベル推奨地点 TOP20</b><br>
+    <b style="font-size: 14px;">🎯 グリッドレベル推奨地点 TOP10</b><br>
     <span style="color: #666; font-size: 11px;">1台設置時の新規カバー効果</span><br><br>
     <b>効果レベル</b><br>
     🔴 90%以上（最高効果）<br>
