@@ -26,7 +26,7 @@ def main():
     
     # 元の推奨データを読み込み
     df = pd.read_csv('grid_level_recommendations.csv')
-    df = df.sort_values('新規カバーリスク加重人口', ascending=False).reset_index(drop=True)
+    df = df.sort_values('新規カバー人口', ascending=False).reset_index(drop=True)
     
     print(f"元の候補数: {len(df)}")
     
@@ -46,7 +46,7 @@ def main():
             '経度': row['経度'],
             '区': row['区'],
             '町丁名': row['町丁名'],
-            '新規カバーリスク加重人口': row['新規カバーリスク加重人口'],
+            '新規カバー人口': row['新規カバー人口'],
             '元順位': idx + 1
         })
         used_indices.add(idx)
@@ -79,7 +79,7 @@ def main():
     for _, row in df_grouped.iterrows():
         print(f"{int(row['順位'])}位: {row['区']} {row['町丁名']}")
         print(f"   座標: ({row['緯度']}, {row['経度']})")
-        print(f"   新規カバー: {row['新規カバーリスク加重人口']:,}")
+        print(f"   新規カバー: {row['新規カバー人口']:,}人相当")
         print(f"   （元データでの順位: {int(row['元順位'])}位）")
         print()
     

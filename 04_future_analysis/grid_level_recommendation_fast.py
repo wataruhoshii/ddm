@@ -76,12 +76,28 @@ def load_shapefiles():
     return all_features
 
 def load_population_data():
-    """人口データを読み込み"""
+    """人口データを読み込み（平均化・正規化済み）"""
     df = pd.read_csv('chocho_analysis_all_years.csv')
     df_agg = df.groupby(['区', '町丁名']).agg({
         '総人口_累計': 'first',
         'リスク加重人口_累計': 'first'
     }).reset_index()
+    
+    # 10時点の累計 → 平均に変換
+    NUM_TIMEPOINTS = 10
+    df_agg['総人口'] = df_agg['総人口_累計'] / NUM_TIMEPOINTS
+    df_agg['リスク加重人口'] = df_agg['リスク加重人口_累計'] / NUM_TIMEPOINTS
+    
+    # 正規化: リスク加重人口の合計が総人口の合計と一致するように
+    total_pop = df_agg['総人口'].sum()
+    total_risk = df_agg['リスク加重人口'].sum()
+    normalization_factor = total_pop / total_risk
+    df_agg['リスク加重人口_正規化'] = df_agg['リスク加重人口'] * normalization_factor
+    
+    print(f"  正規化係数: {normalization_factor:.4f}")
+    print(f"  総人口（平均）: {total_pop:,.0f}")
+    print(f"  リスク加重人口（正規化後）: {df_agg['リスク加重人口_正規化'].sum():,.0f}")
+    
     return df_agg
 
 def main():
@@ -133,7 +149,8 @@ def main():
             grid_points = [(centroid.y, centroid.x)]
         
         pop_row = pop_data[(pop_data['区'] == ward) & (pop_data['町丁名'] == chocho_name)]
-        risk_pop = pop_row['リスク加重人口_累計'].values[0] if not pop_row.empty else 0
+        # 正規化済みリスク加重人口を使用
+        risk_pop = pop_row['リスク加重人口_正規化'].values[0] if not pop_row.empty else 0
         risk_per_point = risk_pop / len(grid_points) if grid_points else 0
         
         for lat, lon in grid_points:
@@ -175,7 +192,7 @@ def main():
     uncovered_risks = risks_arr[uncovered_idx]
     uncovered_info = [all_points[i] for i in range(len(all_points)) if uncovered_idx[i]]
     
-    print(f"  未カバーのリスク加重人口: {uncovered_risks.sum():,.0f}")
+    print(f"  未カバーのリスク調整人口: {uncovered_risks.sum():,.0f}")
     
     # ========================================
     # 未カバー点のKDTree構築
@@ -210,11 +227,11 @@ def main():
             '経度': round(info['lon'], 6),
             '区': info['ward'],
             '町丁名': info['chocho'],
-            '新規カバーリスク加重人口': int(new_covered_risk)
+            '新規カバー人口': int(new_covered_risk)  # 正規化済みリスク調整人口
         })
     
     df_results = pd.DataFrame(results)
-    df_results = df_results.sort_values('新規カバーリスク加重人口', ascending=False)
+    df_results = df_results.sort_values('新規カバー人口', ascending=False)
     
     # ========================================
     # 結果表示
@@ -223,10 +240,12 @@ def main():
     print("🏆 AED設置推奨地点 TOP20（グリッドレベル）")
     print("=" * 70)
     
+    print("※ 数値は正規化済み（リスク調整人口合計 = 総人口）\n")
+    
     for rank, (_, row) in enumerate(df_results.head(20).iterrows(), 1):
         print(f"\n{rank}位: {row['区']} {row['町丁名']}")
         print(f"   座標: ({row['緯度']}, {row['経度']})")
-        print(f"   新規カバー: {row['新規カバーリスク加重人口']:,}")
+        print(f"   新規カバー: {row['新規カバー人口']:,}人相当")
     
     df_results.to_csv('grid_level_recommendations.csv', index=False, encoding='utf-8-sig')
     print(f"\n💾 結果保存: grid_level_recommendations.csv ({len(df_results)}件)")

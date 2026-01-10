@@ -29,11 +29,11 @@ for _, aed in df_aed.iterrows():
         ).add_to(m)
 
 # 推奨地点を番号付きで表示
-max_risk = df_top['新規カバーリスク加重人口'].max()
+max_risk = df_top['新規カバー人口'].max()
 
 for idx, row in df_top.iterrows():
     rank = idx + 1
-    risk = row['新規カバーリスク加重人口']
+    risk = row['新規カバー人口']
     
     # 300mカバー範囲
     folium.Circle(
@@ -61,11 +61,11 @@ for idx, row in df_top.iterrows():
             🎯 推奨 {rank}位: {row['区']} {row['町丁名']}
         </h4>
         <table style="width: 100%; font-size: 12px;">
-            <tr><td>新規カバー人口</td><td><b style="color: {color};">{risk:,}</b></td></tr>
+            <tr><td>新規カバー</td><td><b style="color: {color};">{risk:,}人相当</b></td></tr>
             <tr><td>座標</td><td>({row['緯度']:.6f}, {row['経度']:.6f})</td></tr>
         </table>
         <p style="font-size: 11px; color: #666; margin-top: 8px;">
-            ※この地点にAEDを1台設置した場合の効果<br>
+            ※リスク調整済み（正規化後）<br>
             ※カバー範囲: 300m
         </p>
     </div>
@@ -113,7 +113,7 @@ for _, aed in df_aed.iterrows():
 # 推奨地点（全体マップ）
 for idx, row in df_top.iterrows():
     rank = idx + 1
-    risk = row['新規カバーリスク加重人口']
+    risk = row['新規カバー人口']
     ratio = risk / max_risk
     
     if ratio >= 0.9:

@@ -218,16 +218,16 @@
             
             <div class="stats-grid">
                 <div class="stat-card green">
-                    <div class="number">84.7%</div>
-                    <div class="label">リスク加重カバー率</div>
+                    <div class="number">約152万人</div>
+                    <div class="label">総人口（平均）</div>
                 </div>
                 <div class="stat-card orange">
-                    <div class="number">15.3%</div>
-                    <div class="label">カバー外</div>
+                    <div class="number">約31万人</div>
+                    <div class="label">カバー外人口<br>（リスク調整後）</div>
                 </div>
                 <div class="stat-card red">
-                    <div class="number">11,364,331</div>
-                    <div class="label">カバー外リスク加重人口<br>（累計）</div>
+                    <div class="number">約80%</div>
+                    <div class="label">カバー率</div>
                 </div>
             </div>
             
@@ -248,13 +248,13 @@
                     <li><strong>グリッド生成:</strong> 各町丁ポリゴン内に50m間隔でグリッド点を生成</li>
                     <li><strong>カバー判定:</strong> 各グリッド点が最寄りAEDから300m以内かを判定</li>
                     <li><strong>カバー率算出:</strong> カバーされたグリッド点の割合（0〜100%の連続値）</li>
-                    <li><strong>人口按分:</strong> 町丁の人口をカバー率に応じて按分</li>
+                    <li><strong>リスク調整:</strong> 年齢別心停止リスクで重み付けし、総人口と一致するよう正規化</li>
                 </ul>
             </div>
             
             <div class="formula">
                 カバー率 = カバーされたグリッド点数 ÷ 全グリッド点数<br>
-                カバー人口 = 総人口 × カバー率
+                リスク調整人口 = リスク加重人口 × 正規化係数（= 総人口 / リスク加重人口合計）
             </div>
             
             <div class="highlight warning">
@@ -304,13 +304,14 @@
         <section>
             <h2>🎯 3. AED設置推奨地点 TOP10</h2>
             
-            <p>町丁単位ではなく、<strong>50mグリッド単位</strong>で「その地点にAEDを1台設置した場合に新たにカバーされるリスク加重人口」を算出しました。</p>
+            <p>町丁単位ではなく、<strong>50mグリッド単位</strong>で「その地点にAEDを1台設置した場合に新たにカバーされる人口（リスク調整済み）」を算出しました。</p>
             
             <div class="highlight">
                 <strong>🔬 分析概要:</strong>
                 <ul style="margin: 10px 0 0 20px;">
                     <li>全グリッド点: 70,726点</li>
                     <li>未カバー点: 33,660点（47.6%）</li>
+                    <li>未カバー人口: 約31万人（リスク調整・正規化後）</li>
                     <li>500m以内の近接点をグループ化し、各エリアから最高効果の1点を選択</li>
                 </ul>
             </div>
@@ -327,7 +328,7 @@
                     <div class="ranking-title">多摩区 登戸 <span class="badge red">最高効果</span></div>
                     <div class="ranking-stats">
                         <span>📍 (35.6267, 139.5666)</span>
-                        <span>🎯 新規カバー: <strong>754,696</strong></span>
+                        <span>🎯 新規カバー: <strong>約11,500人</strong></span>
                     </div>
                 </div>
             </div>
@@ -338,7 +339,7 @@
                     <div class="ranking-title">高津区 久末 <span class="badge red">高効果</span></div>
                     <div class="ranking-stats">
                         <span>📍 (35.5642, 139.6246)</span>
-                        <span>🎯 新規カバー: 692,469</span>
+                        <span>🎯 新規カバー: 約10,600人</span>
                     </div>
                 </div>
             </div>
@@ -349,7 +350,7 @@
                     <div class="ranking-title">高津区 千年 <span class="badge orange">高効果</span></div>
                     <div class="ranking-stats">
                         <span>📍 (35.5758, 139.6232)</span>
-                        <span>🎯 新規カバー: 486,369</span>
+                        <span>🎯 新規カバー: 約7,400人</span>
                     </div>
                 </div>
             </div>
@@ -360,7 +361,7 @@
                     <div class="ranking-title">多摩区 登戸（別エリア）</div>
                     <div class="ranking-stats">
                         <span>📍 (35.6246, 139.5538)</span>
-                        <span>🎯 新規カバー: 374,780</span>
+                        <span>🎯 新規カバー: 約5,700人</span>
                     </div>
                 </div>
             </div>
@@ -371,7 +372,7 @@
                     <div class="ranking-title">宮前区 犬蔵二丁目</div>
                     <div class="ranking-stats">
                         <span>📍 (35.5829, 139.5649)</span>
-                        <span>🎯 新規カバー: 367,934</span>
+                        <span>🎯 新規カバー: 約5,600人</span>
                     </div>
                 </div>
             </div>
@@ -382,7 +383,7 @@
                     <div class="ranking-title">高津区 蟹ケ谷</div>
                     <div class="ranking-stats">
                         <span>📍 (35.5642, 139.6302)</span>
-                        <span>🎯 新規カバー: 317,175</span>
+                        <span>🎯 新規カバー: 約4,800人</span>
                     </div>
                 </div>
             </div>
@@ -393,7 +394,7 @@
                     <div class="ranking-title">多摩区 西生田五丁目</div>
                     <div class="ranking-stats">
                         <span>📍 (35.6075, 139.5244)</span>
-                        <span>🎯 新規カバー: 275,315</span>
+                        <span>🎯 新規カバー: 約4,200人</span>
                     </div>
                 </div>
             </div>
@@ -404,7 +405,7 @@
                     <div class="ranking-title">麻生区 東百合丘一丁目</div>
                     <div class="ranking-stats">
                         <span>📍 (35.6032, 139.5262)</span>
-                        <span>🎯 新規カバー: 261,108</span>
+                        <span>🎯 新規カバー: 約4,000人</span>
                     </div>
                 </div>
             </div>
@@ -415,7 +416,7 @@
                     <div class="ranking-title">宮前区 有馬九丁目</div>
                     <div class="ranking-stats">
                         <span>📍 (35.5739, 139.5711)</span>
-                        <span>🎯 新規カバー: 249,821</span>
+                        <span>🎯 新規カバー: 約3,800人</span>
                     </div>
                 </div>
             </div>
@@ -426,13 +427,13 @@
                     <div class="ranking-title">高津区 久末（別エリア）</div>
                     <div class="ranking-stats">
                         <span>📍 (35.5630, 139.6192)</span>
-                        <span>🎯 新規カバー: 248,146</span>
+                        <span>🎯 新規カバー: 約3,800人</span>
                     </div>
                 </div>
             </div>
             
             <div class="highlight warning">
-                <strong>📊 分析のポイント:</strong> グルーピングにより、川崎市全体に分散した推奨地点が得られました。<strong>多摩区・高津区・宮前区・麻生区</strong>に主要な未カバーエリアが存在し、TOP10の設置で広範囲をカバー可能です。
+                <strong>📊 分析のポイント:</strong> グルーピングにより、川崎市全体に分散した推奨地点が得られました。<strong>多摩区・高津区・宮前区・麻生区</strong>に主要な未カバーエリアが存在し、TOP10の設置で約6万人（リスク調整後）を新たにカバー可能です。
             </div>
         </section>
 
@@ -453,36 +454,36 @@
                     <td>🔴 <strong>1位</strong></td>
                     <td>多摩区 登戸</td>
                     <td>(35.6267, 139.5666)</td>
-                    <td><strong>754,696</strong></td>
+                    <td><strong>約11,500人</strong></td>
                 </tr>
                 <tr>
                     <td>🔴 <strong>2位</strong></td>
                     <td>高津区 久末</td>
                     <td>(35.5642, 139.6246)</td>
-                    <td>692,469</td>
+                    <td>約10,600人</td>
                 </tr>
                 <tr>
                     <td>🟠 <strong>3位</strong></td>
                     <td>高津区 千年</td>
                     <td>(35.5758, 139.6232)</td>
-                    <td>486,369</td>
+                    <td>約7,400人</td>
                 </tr>
                 <tr>
                     <td>🟠 <strong>4位</strong></td>
                     <td>多摩区 登戸（別）</td>
                     <td>(35.6246, 139.5538)</td>
-                    <td>374,780</td>
+                    <td>約5,700人</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>5位</strong></td>
                     <td>宮前区 犬蔵二丁目</td>
                     <td>(35.5829, 139.5649)</td>
-                    <td>367,934</td>
+                    <td>約5,600人</td>
                 </tr>
             </table>
             
             <div class="highlight success">
-                <strong>📈 TOP5設置による効果:</strong> 上位5地点にAEDを設置すると、合計約<strong>280万人分</strong>のリスク加重人口を新たにカバー可能。
+                <strong>📈 TOP5設置による効果:</strong> 上位5地点にAEDを設置すると、合計約<strong>4万人</strong>（リスク調整後）を新たにカバー可能。
             </div>
         </section>
 
