@@ -86,3 +86,4 @@ python aed_optimization.py   # 最適配置分析
 - 人口データ: 令和2年（2020年）国勢調査
 
 
+

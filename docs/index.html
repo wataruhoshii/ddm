@@ -262,9 +262,72 @@
             </div>
         </section>
 
+        <!-- リスク加重 -->
+        <section>
+            <h2>⚠️ 2. 年齢別リスク加重</h2>
+            
+            <p>心停止発生率は年齢によって大きく異なります。高齢者ほど発生率が高いため、年齢構成を考慮したリスク加重を適用しました。</p>
+            
+            <div class="highlight warning">
+                <strong>📊 リスク加重の意義:</strong> 単純な人口分布ではなく、「心停止が実際に発生しやすい場所」を特定することで、AED設置の効果を最大化します。
+            </div>
+            
+            <h3>年齢別心停止発生率とリスク重み</h3>
+            
+            <table>
+                <tr>
+                    <th>年齢階級</th>
+                    <th>推定発生率<br>（10万人あたり/年）</th>
+                    <th>リスク重み</th>
+                </tr>
+                <tr><td>0〜4歳</td><td>2</td><td>0.04</td></tr>
+                <tr><td>5〜9歳</td><td>1</td><td>0.02</td></tr>
+                <tr><td>10〜14歳</td><td>2</td><td>0.04</td></tr>
+                <tr><td>15〜19歳</td><td>5</td><td>0.11</td></tr>
+                <tr><td>20〜24歳</td><td>8</td><td>0.18</td></tr>
+                <tr><td>25〜29歳</td><td>12</td><td>0.27</td></tr>
+                <tr><td>30〜34歳</td><td>18</td><td>0.40</td></tr>
+                <tr><td>35〜39歳</td><td>28</td><td>0.62</td></tr>
+                <tr style="background: #fef5e7;"><td><strong>40〜44歳</strong></td><td><strong>45</strong></td><td><strong>1.00（基準）</strong></td></tr>
+                <tr><td>45〜49歳</td><td>70</td><td>1.56</td></tr>
+                <tr><td>50〜54歳</td><td>100</td><td>2.22</td></tr>
+                <tr><td>55〜59歳</td><td>140</td><td>3.11</td></tr>
+                <tr><td>60〜64歳</td><td>190</td><td>4.22</td></tr>
+                <tr><td>65〜69歳</td><td>260</td><td>5.78</td></tr>
+                <tr><td>70〜74歳</td><td>350</td><td>7.78</td></tr>
+                <tr style="background: #fef5e7;"><td><strong>75〜79歳</strong></td><td><strong>450</strong></td><td><strong>10.00</strong></td></tr>
+                <tr><td>80〜84歳</td><td>550</td><td>12.22</td></tr>
+                <tr><td>85〜89歳</td><td>650</td><td>14.44</td></tr>
+                <tr><td>90〜94歳</td><td>700</td><td>15.56</td></tr>
+                <tr style="background: #fed7d7;"><td><strong>95歳以上</strong></td><td><strong>750</strong></td><td><strong>16.67</strong></td></tr>
+            </table>
+            
+            <div class="methodology">
+                <h4>リスク重みの計算方法</h4>
+                <div class="formula">
+                    リスク重み = 各年齢の発生率 ÷ 40〜44歳の発生率（45/10万人）<br><br>
+                    例: 75〜79歳 → 450 ÷ 45 = 10.0<br>
+                    （75歳以上は40代と比べて約10倍のリスク）
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <strong>📈 リスク加重人口の正規化:</strong> リスク加重後の人口合計が総人口と一致するよう正規化係数（約0.15）を乗じています。これにより「約11,500人を新たにカバー」といった数値が実際の人口スケールで解釈できます。
+            </div>
+            
+            <div class="source">
+                <h4>📚 出典</h4>
+                <ul>
+                    <li>総務省消防庁「救急・救助の現況」</li>
+                    <li>日本循環器学会「心臓突然死の疫学」</li>
+                    <li>日本蘇生協議会「JRC蘇生ガイドライン」</li>
+                </ul>
+            </div>
+        </section>
+
         <!-- 将来人口 -->
         <section>
-            <h2>📈 2. 将来人口推計（2025〜2070年）</h2>
+            <h2>📈 3. 将来人口推計（2025〜2070年）</h2>
             
             <p>川崎市の町丁別将来人口推計データ（全10時点）を平等に合計し、長期的な視点でリスクを評価しました。</p>
             
@@ -302,7 +365,7 @@
 
         <!-- グリッドレベル分析 -->
         <section>
-            <h2>🎯 3. AED設置推奨地点 TOP10</h2>
+            <h2>🎯 4. AED設置推奨地点 TOP10</h2>
             
             <p>町丁単位ではなく、<strong>50mグリッド単位</strong>で「その地点にAEDを1台設置した場合に新たにカバーされる人口（リスク調整済み）」を算出しました。</p>
             
@@ -439,7 +502,7 @@
 
         <!-- 戦略提案 -->
         <section>
-            <h2>💡 4. AED設置戦略</h2>
+            <h2>💡 5. AED設置戦略</h2>
             
             <h3>具体的な設置座標（TOP10）</h3>
             
@@ -519,7 +582,7 @@
 
         <!-- データソース -->
         <section>
-            <h2>📚 5. データソースと分析手法</h2>
+            <h2>📚 6. データソースと分析手法</h2>
             
             <table>
                 <tr>

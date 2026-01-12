@@ -91,3 +91,4 @@ m.get_root().html.add_child(folium.Element(legend_html))
 m.save('future_aed_recommendation_map.html')
 print("✅ マップ保存: future_aed_recommendation_map.html")
 
+
