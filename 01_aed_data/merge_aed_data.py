@@ -1,9 +1,10 @@
 """
 川崎市AEDデータ統合スクリプト
-3つのデータソースを統合：
+4つのデータソースを統合：
 1. 川崎市オープンデータ（公共施設）
-2. 全国AEDマップ（民間含む）
+2. 全国AEDマップ（qqzaidanmap）
 3. セブン-イレブン設置店舗リスト
+4. aedm.jp（全国AEDマップ - 一般投稿含む）
 """
 
 import pandas as pd
@@ -123,50 +124,54 @@ def load_seven_eleven() -> pd.DataFrame:
     
     return result
 
+def load_aedm() -> pd.DataFrame:
+    """aedm.jp（全国AEDマップ）データを読み込み"""
+    print("📄 aedm.jp データを読み込み中...")
+    df = pd.read_csv('kawasaki_aed_aedm_v2.csv')
+    
+    result = pd.DataFrame({
+        'id': df['id'].apply(lambda x: f"aedm_{x}"),
+        'source': 'aedm.jp',
+        'name': df['name'],
+        'address': df['address'].apply(lambda x: str(x).replace('川崎市', '').replace('神奈川県川崎市', '') if pd.notna(x) else ''),
+        'address_detail': '',
+        'facility_type': '',
+        'available_24h': False,
+        'available_time': df['able'],
+        'latitude': df['lat'],
+        'longitude': df['lng'],
+        'everyone_allow': True,
+        'note': df['source']  # aedm内のソース情報
+    })
+    
+    print(f"  → {len(result)}件")
+    return result
+
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
-    """重複を除去（名前と住所で判定）"""
+    """重複を除去（座標ベースで判定）"""
     print("\n🔍 重複チェック中...")
     
-    # 正規化関数
-    def normalize_name(name):
-        if pd.isna(name):
-            return ''
-        name = str(name)
-        # 全角半角統一、スペース除去
-        name = name.replace('　', '').replace(' ', '')
-        name = name.replace('‐', '-').replace('－', '-')
-        return name.lower()
-    
-    def normalize_address(addr):
-        if pd.isna(addr):
-            return ''
-        addr = str(addr)
-        addr = addr.replace('　', '').replace(' ', '')
-        addr = addr.replace('川崎市', '')
-        # 数字の正規化
-        addr = re.sub(r'[０-９]', lambda m: chr(ord(m.group()) - 0xFEE0), addr)
-        return addr
-    
-    df['_norm_name'] = df['name'].apply(normalize_name)
-    df['_norm_addr'] = df['address'].apply(normalize_address)
-    
-    # 重複マーキング（優先順位: 川崎市 > 全国AED > セブン）
+    # 重複マーキング（優先順位: 川崎市 > 全国AED(qqzaidan) > セブン > aedm.jp）
     source_priority = {
         '川崎市オープンデータ': 1,
         '全国AEDマップ': 2,
-        'セブン-イレブン（川崎市協定）': 3
+        'セブン-イレブン（川崎市協定）': 3,
+        'aedm.jp': 4
     }
-    df['_priority'] = df['source'].map(source_priority)
+    df['_priority'] = df['source'].map(source_priority).fillna(5)
     
     # ソートして重複除去
     df = df.sort_values('_priority')
     
-    # 名前と住所の組み合わせで重複除去
+    # 座標を小数点5桁で丸めて重複判定
+    df['_lat_round'] = df['latitude'].round(5)
+    df['_lng_round'] = df['longitude'].round(5)
+    
     before = len(df)
-    df = df.drop_duplicates(subset=['_norm_name', '_norm_addr'], keep='first')
+    df = df.drop_duplicates(subset=['_lat_round', '_lng_round'], keep='first')
     
     # 一時カラム削除
-    df = df.drop(columns=['_norm_name', '_norm_addr', '_priority'])
+    df = df.drop(columns=['_priority', '_lat_round', '_lng_round'])
     
     removed = before - len(df)
     print(f"  → 重複除去: {removed}件")
@@ -259,10 +264,11 @@ def main():
     df_kawasaki = load_kawasaki_opendata()
     df_national = load_national_map()
     df_seven = load_seven_eleven()
+    df_aedm = load_aedm()
     
     # 統合
     print("\n🔗 データを統合中...")
-    df_merged = pd.concat([df_kawasaki, df_national, df_seven], ignore_index=True)
+    df_merged = pd.concat([df_kawasaki, df_national, df_seven, df_aedm], ignore_index=True)
     print(f"  → 統合前: {len(df_merged)}件")
     
     # 重複除去

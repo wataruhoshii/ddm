@@ -205,7 +205,7 @@
     <header class="hero">
         <h1>🏥 川崎市AED最適配置分析レポート</h1>
         <p>将来人口推計（2025〜2070年）に基づく、科学的なAED配置最適化提案</p>
-        <p class="date">分析日: 2026年1月9日</p>
+        <p class="date">分析日: 2026年1月14日（aedm.jpデータ完全版 - AED 3,499件）</p>
     </header>
 
     <div class="container">
@@ -219,19 +219,19 @@
             
             <div class="stats-grid">
                 <div class="stat-card green">
-                    <div class="number">約152万人</div>
+                    <div class="number">約117万人</div>
                     <div class="label">総人口（平均）</div>
                 </div>
-                <div class="stat-card">
-                    <div class="number">86.0%</div>
+                <div class="stat-card green">
+                    <div class="number">95.8%</div>
                     <div class="label">カバー率<br>（総人口ベース）</div>
                 </div>
-                <div class="stat-card orange">
-                    <div class="number">84.7%</div>
+                <div class="stat-card green">
+                    <div class="number">95.2%</div>
                     <div class="label">カバー率<br>（リスク調整後）</div>
                 </div>
-                <div class="stat-card red">
-                    <div class="number">約23万人</div>
+                <div class="stat-card orange">
+                    <div class="number">約4.9万人</div>
                     <div class="label">カバー外人口<br>（総人口ベース）</div>
                 </div>
             </div>
@@ -262,8 +262,8 @@
                 リスク調整人口 = リスク加重人口 × 正規化係数（= 総人口 / リスク加重人口合計）
             </div>
             
-            <div class="highlight warning">
-                <strong>📊 300mカバー範囲:</strong> 心停止から除細動までの理想的な時間（3分以内）を考慮し、カバー範囲を300mに設定。この基準で総人口カバー率<strong>86.0%</strong>、リスク調整後<strong>84.7%</strong>と算出されました。リスク調整後のカバー率が低いのは、高齢者が多い地域ほどカバーが不十分な傾向を示しています。
+            <div class="highlight success">
+                <strong>📊 300mカバー範囲:</strong> 心停止から除細動までの理想的な時間（3分以内）を考慮し、カバー範囲を300mに設定。この基準で総人口カバー率<strong>95.8%</strong>、リスク調整後<strong>95.2%</strong>と算出されました。川崎市は高いAEDカバー率を達成していますが、残り約4.9万人のカバー外人口への対応が課題です。
             </div>
         </section>
 
@@ -377,9 +377,10 @@
             <div class="highlight">
                 <strong>🔬 分析概要:</strong>
                 <ul style="margin: 10px 0 0 20px;">
+                    <li>AED総数: <strong>3,499件</strong>（aedm.jp細密グリッド取得後）</li>
                     <li>全グリッド点: 70,726点</li>
-                    <li>未カバー点: 33,660点（47.6%）</li>
-                    <li>未カバー人口: 約31万人（リスク調整・正規化後）</li>
+                    <li>未カバー点: 22,172点（31.3%）</li>
+                    <li>未カバー人口: 約7.5万人（リスク調整・正規化後）</li>
                     <li>500m以内の近接点をグループ化し、各エリアから最高効果の1点を選択</li>
                 </ul>
             </div>
@@ -393,13 +394,13 @@
             <div class="ranking-item">
                 <div class="rank-number top3">1</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 登戸 <span class="badge red">最高効果</span></div>
+                    <div class="ranking-title">高津区 久末 <span class="badge red">最高効果</span></div>
                     <div class="ranking-stats">
-                        <span>📍 (35.6267, 139.5666)</span>
-                        <span>🎯 新規カバー: <strong>約11,500人</strong></span>
+                        <span>📍 (35.5642, 139.6229)</span>
+                        <span>🎯 新規カバー: <strong>約7,200人</strong></span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏪 <strong>設置候補:</strong> いなげや（スーパー）｜建物多数確認済み
+                        ⚠️ <strong>設置候補:</strong> 町内会館・自治会館、または電柱型AED｜<span style="color:#e53e3e;">住宅地（300m圏内に商業施設なし）</span>
                     </div>
                 </div>
             </div>
@@ -407,13 +408,13 @@
             <div class="ranking-item">
                 <div class="rank-number top3">2</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 久末 <span class="badge red">高効果</span></div>
+                    <div class="ranking-title">麻生区 細山四丁目 <span class="badge red">高効果</span></div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5642, 139.6246)</span>
-                        <span>🎯 新規カバー: 約10,600人</span>
+                        <span>📍 (35.6208, 139.5124)</span>
+                        <span>🎯 新規カバー: 約2,700人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏫 <strong>設置候補:</strong> たちばな幼稚園、町内会館｜住宅地（538棟）＋農地混在
+                        🏪 <strong>設置候補:</strong> セブン-イレブン、クリエイトSD｜設置容易
                     </div>
                 </div>
             </div>
@@ -421,13 +422,13 @@
             <div class="ranking-item">
                 <div class="rank-number top3">3</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 千年 <span class="badge orange">高効果</span></div>
+                    <div class="ranking-title">宮前区 東有馬五丁目 <span class="badge orange">高効果</span></div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5758, 139.6232)</span>
-                        <span>🎯 新規カバー: 約7,400人</span>
+                        <span>📍 (35.5697, 139.5987)</span>
+                        <span>🎯 新規カバー: 約2,500人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏪 <strong>設置候補:</strong> ローソンストア100、ファミリーマート｜住宅地（986棟）
+                        🏛️ <strong>設置候補:</strong> 町内会館・自治会館｜住宅地（商業施設少）
                     </div>
                 </div>
             </div>
@@ -435,13 +436,13 @@
             <div class="ranking-item">
                 <div class="rank-number">4</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 登戸（別エリア）</div>
+                    <div class="ranking-title">麻生区 白鳥四丁目</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.6246, 139.5538)</span>
-                        <span>🎯 新規カバー: 約5,700人</span>
+                        <span>📍 (35.6065, 139.4865)</span>
+                        <span>🎯 新規カバー: 約2,200人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏪 <strong>設置候補:</strong> コープかながわ登戸店、ファミリーマート｜住宅地（717棟）
+                        🛒 <strong>設置候補:</strong> OdakyuOX、ツルハドラッグ、栗平調剤薬局｜設置容易
                     </div>
                 </div>
             </div>
@@ -449,13 +450,13 @@
             <div class="ranking-item">
                 <div class="rank-number">5</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">宮前区 犬蔵二丁目</div>
+                    <div class="ranking-title">中原区 上平間</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5829, 139.5649)</span>
-                        <span>🎯 新規カバー: 約5,600人</span>
+                        <span>📍 (35.5626, 139.6784)</span>
+                        <span>🎯 新規カバー: 約2,200人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏪 <strong>設置候補:</strong> セブン-イレブン｜住宅地（390棟）
+                        🏛️ <strong>設置候補:</strong> 町内会館・自治会館｜住宅地（商業施設少）
                     </div>
                 </div>
             </div>
@@ -463,13 +464,13 @@
             <div class="ranking-item">
                 <div class="rank-number">6</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 蟹ケ谷</div>
+                    <div class="ranking-title">麻生区 片平四丁目</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5642, 139.6302)</span>
-                        <span>🎯 新規カバー: 約4,800人</span>
+                        <span>📍 (35.5931, 139.4882)</span>
+                        <span>🎯 新規カバー: 約2,100人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏛️ <strong>設置候補:</strong> 専念寺、八太神社、町内会館｜住宅地（524棟）コンビニなし
+                        🏛️ <strong>設置候補:</strong> 町内会館・自治会館｜住宅地（商業施設少）
                     </div>
                 </div>
             </div>
@@ -477,13 +478,13 @@
             <div class="ranking-item">
                 <div class="rank-number">7</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">多摩区 西生田五丁目</div>
+                    <div class="ranking-title">中原区 中丸子</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.6075, 139.5244)</span>
-                        <span>🎯 新規カバー: 約4,200人</span>
+                        <span>📍 (35.5669, 139.6756)</span>
+                        <span>🎯 新規カバー: 約2,100人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        💊 <strong>設置候補:</strong> クオール薬局｜住宅地（957棟）農地・森林混在
+                        🏛️ <strong>設置候補:</strong> 町内会館・自治会館｜住宅地（商業施設少）
                     </div>
                 </div>
             </div>
@@ -491,13 +492,13 @@
             <div class="ranking-item">
                 <div class="rank-number">8</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">麻生区 東百合丘一丁目</div>
+                    <div class="ranking-title">麻生区 高石五丁目</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.6032, 139.5262)</span>
-                        <span>🎯 新規カバー: 約4,000人</span>
+                        <span>📍 (35.6028, 139.5202)</span>
+                        <span>🎯 新規カバー: 約2,000人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏛️ <strong>設置候補:</strong> クオール薬局、さくらの丘（福祉施設）｜住宅地（993棟）
+                        ⚠️ <strong>設置候補:</strong> 要現地調査（周辺自治会館には設置済み）｜住宅地
                     </div>
                 </div>
             </div>
@@ -505,13 +506,13 @@
             <div class="ranking-item">
                 <div class="rank-number">9</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">宮前区 有馬九丁目</div>
+                    <div class="ranking-title">多摩区 登戸</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5739, 139.5711)</span>
-                        <span>🎯 新規カバー: 約3,800人</span>
+                        <span>📍 (35.6258, 139.5689)</span>
+                        <span>🎯 新規カバー: 約1,800人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏪 <strong>設置候補:</strong> ファミリーマート、寿デイサービスセンター｜住宅地（697棟）
+                        🏫 <strong>設置候補:</strong> 東京都立狛江高等学校、または電柱型AED｜<span style="color:#e53e3e;">住宅地（300m圏内に商業施設なし）</span>
                     </div>
                 </div>
             </div>
@@ -519,19 +520,19 @@
             <div class="ranking-item">
                 <div class="rank-number">10</div>
                 <div class="ranking-content">
-                    <div class="ranking-title">高津区 久末（別エリア）</div>
+                    <div class="ranking-title">麻生区 虹ケ丘三丁目</div>
                     <div class="ranking-stats">
-                        <span>📍 (35.5630, 139.6192)</span>
-                        <span>🎯 新規カバー: 約3,800人</span>
+                        <span>📍 (35.5785, 139.5244)</span>
+                        <span>🎯 新規カバー: 約1,800人</span>
                     </div>
                     <div style="margin-top: 8px; font-size: 0.9rem; color: #4a5568;">
-                        🏫 <strong>設置候補:</strong> 川崎めぐみ幼稚園｜森林・農地混在エリア
+                        🛒 <strong>設置候補:</strong> ミニストップ、まいばすけっと、Fit Care DEPOT｜設置容易
                     </div>
                 </div>
             </div>
             
-            <div class="highlight warning">
-                <strong>📊 分析のポイント:</strong> グルーピングにより、川崎市全体に分散した推奨地点が得られました。<strong>多摩区・高津区・宮前区・麻生区</strong>に主要な未カバーエリアが存在し、TOP10の設置で約6万人（リスク調整後）を新たにカバー可能です。
+            <div class="highlight success">
+                <strong>📊 分析のポイント:</strong> 川崎市は既にカバー率95%超を達成。<strong>高津区・麻生区・中原区</strong>に残された未カバーエリアが存在し、TOP10の設置で約2.7万人（リスク調整後）を新たにカバー可能。これにより97%超のカバー率を実現できます。
             </div>
             
             <div class="methodology">
@@ -563,78 +564,78 @@
                 </tr>
                 <tr>
                     <td>🔴 <strong>1位</strong></td>
-                    <td>多摩区 登戸</td>
-                    <td>(35.6267, 139.5666)</td>
-                    <td><strong>約11,500人</strong></td>
-                    <td>いなげや</td>
+                    <td>高津区 久末</td>
+                    <td>(35.5642, 139.6229)</td>
+                    <td><strong>約7,200人</strong></td>
+                    <td>幼稚園・町内会館</td>
                 </tr>
                 <tr>
                     <td>🔴 <strong>2位</strong></td>
-                    <td>高津区 久末</td>
-                    <td>(35.5642, 139.6246)</td>
-                    <td>約10,600人</td>
+                    <td>麻生区 片平四丁目</td>
+                    <td>(35.5922, 139.4899)</td>
+                    <td>約3,200人</td>
                     <td>たちばな幼稚園</td>
                 </tr>
                 <tr>
                     <td>🟠 <strong>3位</strong></td>
-                    <td>高津区 千年</td>
-                    <td>(35.5758, 139.6232)</td>
-                    <td>約7,400人</td>
-                    <td>ローソンストア100</td>
+                    <td>麻生区 細山四丁目</td>
+                    <td>(35.6208, 139.5124)</td>
+                    <td>約2,700人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟠 <strong>4位</strong></td>
-                    <td>多摩区 登戸（別）</td>
-                    <td>(35.6246, 139.5538)</td>
-                    <td>約5,700人</td>
-                    <td>コープかながわ</td>
+                    <td>中原区 中丸子</td>
+                    <td>(35.5665, 139.6744)</td>
+                    <td>約2,700人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>5位</strong></td>
-                    <td>宮前区 犬蔵二丁目</td>
-                    <td>(35.5829, 139.5649)</td>
-                    <td>約5,600人</td>
-                    <td>セブン-イレブン</td>
+                    <td>中原区 上平間</td>
+                    <td>(35.5631, 139.6790)</td>
+                    <td>約2,600人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>6位</strong></td>
-                    <td>高津区 蟹ケ谷</td>
-                    <td>(35.5642, 139.6302)</td>
-                    <td>約4,800人</td>
-                    <td>町内会館・寺社</td>
+                    <td>宮前区 東有馬五丁目</td>
+                    <td>(35.5697, 139.5987)</td>
+                    <td>約2,500人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>7位</strong></td>
-                    <td>多摩区 西生田五丁目</td>
-                    <td>(35.6075, 139.5244)</td>
-                    <td>約4,200人</td>
-                    <td>クオール薬局</td>
+                    <td>多摩区 菅野戸呂</td>
+                    <td>(35.6392, 139.5299)</td>
+                    <td>約2,300人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>8位</strong></td>
-                    <td>麻生区 東百合丘一丁目</td>
-                    <td>(35.6032, 139.5262)</td>
-                    <td>約4,000人</td>
-                    <td>クオール薬局</td>
+                    <td>麻生区 白鳥四丁目</td>
+                    <td>(35.6065, 139.4860)</td>
+                    <td>約2,200人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>9位</strong></td>
-                    <td>宮前区 有馬九丁目</td>
-                    <td>(35.5739, 139.5711)</td>
-                    <td>約3,800人</td>
-                    <td>ファミリーマート</td>
+                    <td>宮前区 土橋七丁目</td>
+                    <td>(35.5907, 139.5733)</td>
+                    <td>約2,200人</td>
+                    <td>地域施設</td>
                 </tr>
                 <tr>
                     <td>🟢 <strong>10位</strong></td>
-                    <td>高津区 久末（別）</td>
-                    <td>(35.5630, 139.6192)</td>
-                    <td>約3,800人</td>
-                    <td>川崎めぐみ幼稚園</td>
+                    <td>宮前区 有馬九丁目</td>
+                    <td>(35.5730, 139.5700)</td>
+                    <td>約2,200人</td>
+                    <td>地域施設</td>
                 </tr>
             </table>
             
             <div class="highlight success">
-                <strong>📈 TOP10設置による効果:</strong> 上位10地点にAEDを設置すると、合計約<strong>6万人</strong>（リスク調整後）を新たにカバー可能。
+                <strong>📈 TOP10設置による効果:</strong> 上位10地点にAEDを設置すると、合計約<strong>2.7万人</strong>（リスク調整後）を新たにカバー可能。カバー率は95.2%→97%超に向上。
             </div>
         </section>
 
@@ -648,8 +649,8 @@
                     <th>出典</th>
                 </tr>
                 <tr>
-                    <td>AED設置場所（936件）</td>
-                    <td>川崎市オープンデータ、全国AEDマップ、セブン-イレブン</td>
+                    <td>AED設置場所（3,499件）</td>
+                    <td>川崎市オープンデータ（535件）、全国AEDマップ/qqzaidanmap（649件）、aedm.jp（2,225件）、セブン-イレブン（90件）</td>
                 </tr>
                 <tr>
                     <td>町丁ポリゴン（676件）</td>
