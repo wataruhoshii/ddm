@@ -643,28 +643,62 @@
         <section>
             <h2>📚 6. データソースと分析手法</h2>
             
+            <h3>AEDデータ（3,499件）</h3>
+            <table>
+                <tr>
+                    <th>データソース</th>
+                    <th>件数</th>
+                    <th>URL</th>
+                </tr>
+                <tr>
+                    <td>川崎市オープンデータ</td>
+                    <td>535件</td>
+                    <td><a href="https://www.city.kawasaki.jp/170/page/0000040607.html" target="_blank">川崎市 AED設置施設一覧</a></td>
+                </tr>
+                <tr>
+                    <td>全国AEDマップ（日本救急医療財団）</td>
+                    <td>649件</td>
+                    <td><a href="https://www.qqzaidanmap.jp/" target="_blank">https://www.qqzaidanmap.jp/</a></td>
+                </tr>
+                <tr>
+                    <td>AED N@VI / aedm.jp</td>
+                    <td>2,225件</td>
+                    <td><a href="https://aedm.jp/" target="_blank">https://aedm.jp/</a></td>
+                </tr>
+                <tr>
+                    <td>セブン-イレブン AED設置店舗</td>
+                    <td>90件</td>
+                    <td><a href="https://www.sej.co.jp/social/aed.html" target="_blank">https://www.sej.co.jp/social/aed.html</a></td>
+                </tr>
+            </table>
+            
+            <h3>人口・地理データ</h3>
             <table>
                 <tr>
                     <th>データ</th>
                     <th>出典</th>
-                </tr>
-                <tr>
-                    <td>AED設置場所（3,499件）</td>
-                    <td>川崎市オープンデータ（535件）、全国AEDマップ/qqzaidanmap（649件）、aedm.jp（2,225件）、セブン-イレブン（90件）</td>
+                    <th>URL</th>
                 </tr>
                 <tr>
                     <td>町丁ポリゴン（676件）</td>
                     <td>e-Stat 小地域境界データ（令和2年国勢調査）</td>
+                    <td><a href="https://www.e-stat.go.jp/" target="_blank">https://www.e-stat.go.jp/</a></td>
                 </tr>
                 <tr>
                     <td>将来人口推計</td>
                     <td>川崎市（R7〜R52、5年ごと10時点）</td>
+                    <td><a href="https://www.city.kawasaki.jp/170/page/0000018732.html" target="_blank">川崎市 町丁別年齢別人口</a></td>
                 </tr>
                 <tr>
                     <td>心停止発生率</td>
-                    <td>疫学研究（総務省消防庁等）</td>
+                    <td>総務省消防庁「救急・救助の現況」</td>
+                    <td><a href="https://www.fdma.go.jp/" target="_blank">消防庁ウェブサイト</a></td>
                 </tr>
             </table>
+            
+            <div class="highlight">
+                <strong>📋 データ統合について:</strong> 各データソースから取得したAED位置情報を統合し、<strong>50m以内の重複を除去</strong>して3,499件の統合データセットを作成しました。
+            </div>
         </section>
     </div>
 
