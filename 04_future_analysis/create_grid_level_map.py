@@ -8,8 +8,12 @@ import folium
 df_rec = pd.read_csv('grid_level_recommendations_grouped.csv')
 df_aed = pd.read_csv('../01_aed_data/kawasaki_aed_merged.csv')
 
-# TOP10
-df_top = df_rec.head(10)
+# 除外地点（川の上）
+exclude_locations = ['上平間', '中丸子', '登戸']
+df_rec_filtered = df_rec[~df_rec['町丁名'].isin(exclude_locations)].reset_index(drop=True)
+
+# TOP10（除外後）
+df_top = df_rec_filtered.head(10)
 
 # マップ作成（登戸付近を中心に）
 center_lat = df_top['緯度'].mean()
